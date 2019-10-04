@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ToDo_List App</title>
+    <link rel="stylesheet" href="assets/style/home.css" />
+</head>
+<body>
+
+   
+         <header>
+            <h1> TODO LIST APP </h1>
+
+             <form action="assets/scripts/todo.js">
+            <label> ToDo Task:</label>
+            <br />
+            <textarea placeholder="What do you want to Do" id="task"> </textarea> 
+            <br />
+            <br />
+            <label>Set DeadLine:</label>
+            <br />
+           <input type="time" id="_time" value="00:00" /> <input id="_date" type="date" />
+            <br />
+            
+            <br />
+            <button type="button" id="btn">Add Task</button>
+        </form>
+        </header>
+       
+    <div class="parent">
+      <h2> Pending Tasks:<span> 0 </span></h2>
+
+      <p> You have not created any task yet....</p>
+    </div>
+        </div>
+
+  
+
+<script src="./node_modules/sweetalert/dist/sweetalert.min.js"></script>
+ <script src="assets/scripts/todo.js"> </script> 
+</body>
+</html>
