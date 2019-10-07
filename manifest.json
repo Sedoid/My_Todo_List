@@ -1,0 +1,21 @@
+{
+    "name": "Reminder",
+    "short_name" : "Reminder",
+    "icons":[
+        {
+            "src": "",
+            "sizes": "192x192",
+            "type": ""
+        },
+        {
+            "src":"",
+            "sizes":"512x512",
+            "type": ""
+        }
+    ],
+    "theme_color": "red",
+    "background_color": "green",
+    "start_url":"/",
+    "display": "standalone",
+    "orientation": "any"
+}

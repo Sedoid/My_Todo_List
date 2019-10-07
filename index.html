@@ -6,14 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDo_List App</title>
     <link rel="stylesheet" href="assets/style/home.css" />
+    <link rel="manifest" href="./manifest.json" />
 </head>
-<body>
-
-   
+<body>  
          <header>
             <h1> TODO LIST APP </h1>
 
-             <form action="assets/scripts/todo.js">
+             <form>
             <label> ToDo Task:</label>
             <br />
             <textarea placeholder="What do you want to Do" id="task"> </textarea> 
@@ -21,17 +20,19 @@
             <br />
             <label>Set DeadLine:</label>
             <br />
-           <input type="time" id="_time" value="00:00" /> <input id="_date" type="date" />
+           <input type="time" id="_time" value="00:00" /> 
+           <input id="_date" type="date" />
             <br />
             
             <br />
             <button type="button" id="btn">Add Task</button>
+            
         </form>
         </header>
        
     <div class="parent">
       <h2> Pending Tasks:<span> 0 </span></h2>
-
+<hr />
       <p> You have not created any task yet....</p>
     </div>
         </div>
