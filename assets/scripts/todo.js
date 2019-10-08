@@ -4,13 +4,22 @@
 //header
 //footer
 
+
+// window.localStorage.clear();
 let x = 0;
 let pending_tasks = 0;
 let Ongoing_tasks = 0;
 let colors =['#3498db','#8e44ad','#2c3e50','#40407a','#006266','#cc8e35','#b33939','#e1b12c','#192a56','#6D214F','#58B19F','#7f8c8d','#0652DD','#ED4C67','#2c2c54','#227093','#474787'];
 // alert(Math.floor(Math.random()*18));
+
+  var saved_data ={
+    done:0,
+    deleted: 0,
+  }
+
+
 function setTimer (time_up,site){
-  // alert(`lets walk together and the deadline is ${time_up}`);
+
   setInterval(
     function(){
       var now = new Date().getTime(); 
@@ -55,22 +64,152 @@ let root = document.querySelector(`.root${site}`);
 }, 1000);
 
 }
+
+
+function formatDate(date,time,pending_tasks){
+  let deadline = date.split('-');
+  
+    deadline.reverse();
+
+    let temp = deadline[0]+',';
+    deadline[0] = deadline[1];
+    deadline[1] = temp; 
+
+    var months = ['jan','feb','mar','Apr','may','jun','july','aug','sept','oct','nov','dec'];
+    deadline[0] = months[deadline[0]-1];
+    var end = `${deadline[0]} ${deadline[1]} ${deadline[2]} ${time}:00 `;
+    var _deadline = new Date(end).getTime();  
+    setTimer(_deadline,pending_tasks);
+    return end;
+}
+
 window.onload = function (){
-    
-    // alert('Hello I am here');
-    var task = document.getElementById('task');
+ var task = document.getElementById('task');
+ 
  
     var btn = document.getElementById('btn');
     var _time = document.getElementById('_time');
     var _date = document.getElementById('_date');
     var parent = document.getElementsByClassName('parent')[0];
     var _empty = document.querySelector('p');
-     task.value = "";
-     _date.value="";
-     
- 
 
+   function taskComponent(task,x,pending_tasks,date,time){
+
+      var container = document.createElement("div");
+      container.className = `${pending_tasks} child `;
+      container.style.border= `2px solid ${colors[x]}`;
+      parent.appendChild(container);
+    
+    //Creating the header for event container
+    var header = document.createElement("div");
+    //header.innerHTML= "Time Left: " + _time.value + " <div class='root'> </div>" + _date.value;
+    header.style.backgroundColor = colors[x];
+    header.className = `root root${pending_tasks}`;
+    console.log(header.innerHTML);
+    container.appendChild(header);
+    // /////////////////////////////////////////////////
+    let event = document.createElement('div');
+    event.className="task"
+    event.innerHTML=task;
+    container.appendChild(event);
+    
+    //Creating a  footer for the container  
+    var footer = document.createElement('div');
+    footer.innerHTML= "<span> DeadLine: &nbsp " +formatDate(date,time)+ "</span> ";
+    footer.style.backgroundColor = colors[x];
+    footer.style.color = "white";
+    footer.className = "foot"
+    container.appendChild(footer);
+    //Containing the delete and Complete
+    
+    //creating the Task Completed and Delete Task button
+    let _taskCompleted = document.createElement('button');
+    _taskCompleted.innerHTML= 'Task Completed';
+    _taskCompleted.style.padding = '10px';
+    _taskCompleted.className = `completed completed${pending_tasks}`;
+    footer.appendChild(_taskCompleted);
+    
+    _taskCompleted.onclick=function(){
+      saved_data.done = 1;
+      alert(saved_data.done);
+      swal("Good job!", `You deleted ${pending_tasks}  ${pending_tasks>1?'tasks': 'task'} Today!`, "success");             
+      this.innerHTML = " DONE ";
+      this.parentNode.removeChild(`${deleted.parentNode}`);
+    }
+    
+    //Creating the Task Deleted button
+    let _taskdeleted = document.createElement('button');
+    _taskdeleted.innerHTML= 'Delete Task';
+    _taskdeleted.style.padding = '10px';
+    _taskdeleted.className = `deleted deleted${pending_tasks}`;
+    _taskdeleted.style.borderRadius="1px solid white";
+    footer.appendChild(_taskdeleted);
+    
+    
+    // Deleting a Tasks is done here
+    _taskdeleted.onclick=() => {
+    swal({
+    title: "Are you sure?",
+    text: "Once deleted, you will not see this task again!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+    })
+    .then((willDelete) => {
+    if (willDelete) {
+      swal("Task has been succesfully cancelled", {
+        icon: "success",
+      });
+    
+      
+    // ...alert('about to remove child');
+    console.log(footer.parentNode);
+    let _node =footer.parentNode;
+    console.log(_node); 
+    let del = _node.className;
+    _node.parentNode.removeChild(_node);
+    saved_data.deleted = 1;
   
+  
+   window.localStorage.removeItem(del[0]);
+// alert(window.localStorage.getItem(del[0]));
+    } else {
+      swal("Your task is safe and still pending!");
+    }
+    
+    });
+    
+    }
+      return saved_data;
+    }
+
+    
+    // alert('Hello I am here');
+   
+      
+    task.value = "";
+    _date.value="";
+
+let counter = 0,
+  keys = Object.keys(localStorage);
+      keys.sort();
+  while(counter<keys.length){
+
+ _empty.style.display = 'none';
+  let user = JSON.parse(window.localStorage.getItem(keys[counter]));
+ if(user){
+  taskComponent(user.task,counter,counter,user.deadline,user.deadline,user.time);
+  formatDate(user.deadline,user.time,counter);
+ }
+
+ counter++;
+  }
+
+  var values=[...keys];
+
+
+  pending_tasks = counter
+  //(keys[counter-1])>0? counter+1:0;  
 
 
     btn.onclick = function(){
@@ -89,121 +228,131 @@ window.onload = function (){
 
         }
         else{
-
+   _empty.style.display = 'none';
            
   //Creating the deadline Counter
  
  //aaaasdafffffff let deadline = `${_date.value} ${_time.value}:00`;
 
  //Finding dealine
-  let deadline = _date.value.split('-');
+  // let deadline = _date.value.split('-');
   
-    deadline.reverse();
+  //   deadline.reverse();
 
-    let temp = deadline[0]+',';
-    deadline[0] = deadline[1];
-    deadline[1] = temp; 
+  //   let temp = deadline[0]+',';
+  //   deadline[0] = deadline[1];
+  //   deadline[1] = temp; 
 
-    var months = ['jan','feb','mar','Apr','may','jun','july','aug','sept','oct','nov','dec'];
-    deadline[0] = months[deadline[0]-1];
-    var end = `${deadline[0]} ${deadline[1]} ${deadline[2]} ${_time.value}:00 `;
-  
+  //   var months = ['jan','feb','mar','Apr','may','jun','july','aug','sept','oct','nov','dec'];
+  //   deadline[0] = months[deadline[0]-1];
+  //   var end = `${deadline[0]} ${deadline[1]} ${deadline[2]} ${_time.value}:00 `;
+
+      //var end = formatDate(_date.value,_time.value)
+      // var _deadline = new Date(end).getTime();  
+      // setTimer(_deadline,pending_tasks);
+
     // console.log(end);
-  console.log(end);
   //console.log(_date.value.split('-')); //gina niga nagi gina gani inag anig 
-      _empty.style.display = 'none';
+   
 
       //Creating a new Event container
 
-          var container = document.createElement("div");
-              container.className = 'child';
-              container.style.border= `2px solid ${colors[x]}`;
-              parent.appendChild(container);
+      //     var container = document.createElement("div");
+      //         container.className = 'child';
+      //         container.style.border= `2px solid ${colors[x]}`;
+      //         parent.appendChild(container);
     
-      //Creating the header for event container
-           var header = document.createElement("div");
-            header.innerHTML= "Time Left: " + _time.value + " <div class='root'> </div>" + _date.value;
-            header.style.backgroundColor = colors[x];
-            header.className = `root root${pending_tasks}`;
-            console.log(header.innerHTML);
-            container.appendChild(header);
+      // //Creating the header for event container
+      //      var header = document.createElement("div");
+      //       header.innerHTML= "Time Left: " + _time.value + " <div class='root'> </div>" + _date.value;
+      //       header.style.backgroundColor = colors[x];
+      //       header.className = `root root${pending_tasks}`;
+      //       console.log(header.innerHTML);
+      //       container.appendChild(header);
 // //////////////////////////////////////////////////////////////////////
 
   // Returns the time from midnight Jan 1 1970 to a specified deadline in milliseconds
-  var _deadline = new Date(end).getTime();  
-
+  
+   
   // alert('countdown.js is here');
 
-  setTimer(_deadline,pending_tasks);
- 
+  taskComponent(task.value,x,pending_tasks,_date.value,_time.value);
+  formatDate(_date.value,_time.value,pending_tasks);
+ // Save the data in the localStorage 
+   saved_data.deadline  = _date.value ;
+   saved_data.task      = task.value;
+   saved_data.time      = _time.value;
+
+    window.localStorage.setItem(pending_tasks,JSON.stringify(saved_data)); 
 // //////////////////////////////////////////////////////////////////////
        //Creating a body for the new task      
-            let event = document.createElement('div');
-            event.className="task"
-            event.innerHTML=task.value;
-            container.appendChild(event);
+      //       let event = document.createElement('div');
+      //       event.className="task"
+      //       event.innerHTML=task.value;
+      //       container.appendChild(event);
 
-        //Creating a  footer for the container  
-            var footer = document.createElement('div');
-            footer.innerHTML= "<span> DeadLine: &nbsp" + end + "</span> ";
-            footer.style.backgroundColor = colors[x];
-            footer.style.color = "white";
-            footer.className = "foot"
-            container.appendChild(footer);
-        //Containing the delete and Complete
+      //   //Creating a  footer for the container  
+      //       var footer = document.createElement('div');
+      //       footer.innerHTML= "<span> DeadLine: &nbsp" + formatDate(_date.value,_time.value); + "</span> ";
+      //       footer.style.backgroundColor = colors[x];
+      //       footer.style.color = "white";
+      //       footer.className = "foot"
+      //       container.appendChild(footer);
+      //   //Containing the delete and Complete
 
-        //creating the Task Completed and Delete Task button
-            let _taskCompleted = document.createElement('button');
-            _taskCompleted.innerHTML= 'Task Completed';
-            _taskCompleted.style.padding = '10px';
-            _taskCompleted.className = `completed completed${pending_tasks}`;
-            footer.appendChild(_taskCompleted);
+      //   //creating the Task Completed and Delete Task button
+      //       let _taskCompleted = document.createElement('button');
+      //       _taskCompleted.innerHTML= 'Task Completed';
+      //       _taskCompleted.style.padding = '10px';
+      //       _taskCompleted.className = `completed completed${pending_tasks}`;
+      //       footer.appendChild(_taskCompleted);
 
-            _taskCompleted.onclick=function(){
-              swal("Good job!", `You deleted ${pending_tasks}  ${pending_tasks>1?'tasks': 'task'} Today!`, "success");
-            }
+      //       _taskCompleted.onclick=function(){
+      //         saved_data.done = 1;
+      //         swal("Good job!", `You deleted ${pending_tasks}  ${pending_tasks>1?'tasks': 'task'} Today!`, "success");             
+      //         this.innerHTML = " DONE ";
+      //         this.parentNode.removeChild(`${deleted.parentNode}`);
+      //       }
 
-      //Creating the Task Deleted button
-        let _taskdeleted = document.createElement('button');
-        _taskdeleted.innerHTML= 'Delete Task';
-        _taskdeleted.style.padding = '10px';
-        _taskdeleted.className = `deleted deleted${pending_tasks}`;
-        _taskdeleted.style.borderRadius="1px solid white";
-        footer.appendChild(_taskdeleted);
+      // //Creating the Task Deleted button
+      //   let _taskdeleted = document.createElement('button');
+      //   _taskdeleted.innerHTML= 'Delete Task';
+      //   _taskdeleted.style.padding = '10px';
+      //   _taskdeleted.className = `deleted deleted${pending_tasks}`;
+      //   _taskdeleted.style.borderRadius="1px solid white";
+      //   footer.appendChild(_taskdeleted);
+       
 
-        // Deleting a Tasks is done here
-        _taskdeleted.onclick=() => {
-          swal({
-            title: "Are you sure?",
-            text: "Once deleted, you will not see this task again!",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-          })
-          .then((willDelete) => {
-            if (willDelete) {
-              swal("Task has been succesfully cancelled", {
-                icon: "success",
-              });
+      //   // Deleting a Tasks is done here
+      //   _taskdeleted.onclick=() => {
+      //     swal({
+      //       title: "Are you sure?",
+      //       text: "Once deleted, you will not see this task again!",
+      //       icon: "warning",
+      //       buttons: true,
+      //       dangerMode: true,
+      //     })
+      //     .then((willDelete) => {
+      //       if (willDelete) {
+      //         swal("Task has been succesfully cancelled", {
+      //           icon: "success",
+      //         });
 
               
-          // ...alert('about to remove child');
-          console.log(footer.parentNode);
-          let _node =footer.parentNode;
-          console.log(_node);  ;
-          _node.parentNode.removeChild(_node);
-            } else {
-              swal("Your task is safe and still pending!");
-            }
+      //     // ...alert('about to remove child');
+      //     console.log(footer.parentNode);
+      //     let _node =footer.parentNode;
+      //     console.log(_node);  ;
+      //     _node.parentNode.removeChild(_node);
+      //      saved_data.deleted = 1;
+      //       } else {
+      //         swal("Your task is safe and still pending!");
+      //       }
 
-          });
+      //     });
          
-        }
-
-               
-              
-                
-               
+      //   }
+                            
       // Stying and passing data into the  the event header
            
                 ++x;
@@ -213,9 +362,9 @@ window.onload = function (){
                 document.querySelector('span').innerHTML=pending_tasks;
             }
            
-
+console.log(saved_data);
       
-    };
+     };
 
 
 }
