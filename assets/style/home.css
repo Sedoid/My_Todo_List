@@ -7,7 +7,7 @@ hr{
     width: 80%;
     height: 1px;
     background-color: #ccc;
-  border: 0;
+    border: 0;
     box-shadow: 1px 1px 2px rgb(0, 102, 255);
     margin-bottom: 3px;
 }
@@ -183,3 +183,16 @@ form button{
     background-color: #c0392b;
 }
 
+@media screen and (max-width: 500px){
+    .child{
+        width: 95%;
+    }
+
+    .child > div{
+        padding: 1;
+    }
+
+    form textarea{
+        width: 90%;
+    }
+}
