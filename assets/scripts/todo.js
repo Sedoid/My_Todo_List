@@ -5,11 +5,11 @@
 //footer
 
 
-// window.localStorage.clear();
+// window.localStorage.removeItem(1);
 let x = 0;
 let pending_tasks = 0;
 let Ongoing_tasks = 0;
-let colors =['#3498db','#8e44ad','#2c3e50','#40407a','#006266','#cc8e35','#b33939','#e1b12c','#192a56','#6D214F','#58B19F','#7f8c8d','#0652DD','#ED4C67','#2c2c54','#227093','#474787'];
+let colors =['#6D214F','#58B19F','#7f8c8d','#0652DD','#ED4C67','#2c2c54','#227093','#474787','#3498db','#8e44ad','#2c3e50','#40407a','#006266','#cc8e35','#192a56','#b33939','#e1b12c'];
 // alert(Math.floor(Math.random()*18));
 
   var saved_data ={
@@ -162,16 +162,27 @@ window.onload = function (){
       });
     
       
-    // ...alert('about to remove child');
+  //  alert('about to remove child');
     console.log(footer.parentNode);
     let _node =footer.parentNode;
     console.log(_node); 
+
+    let keys = Object.keys(localStorage);
     let del = _node.className;
+      // alert(del);
+   
+    let c =del[0];
     _node.parentNode.removeChild(_node);
-    saved_data.deleted = 1;
+
+   keys.forEach(index =>{
+      if(index == del[0]){
+        //  alert('about to remove'+ del[0]);
+        window.localStorage.removeItem(index);
+      }
+   });
   
-  
-   window.localStorage.removeItem(del[0]);
+      window.localStorage.removeItem(c);
+ 
 // alert(window.localStorage.getItem(del[0]));
     } else {
       swal("Your task is safe and still pending!");
@@ -190,25 +201,39 @@ window.onload = function (){
     task.value = "";
     _date.value="";
 
-let counter = 0,
+var counter = 0,
   keys = Object.keys(localStorage);
       keys.sort();
-  while(counter<keys.length){
 
- _empty.style.display = 'none';
-  let user = JSON.parse(window.localStorage.getItem(keys[counter]));
- if(user){
-  taskComponent(user.task,counter,counter,user.deadline,user.deadline,user.time);
-  formatDate(user.deadline,user.time,counter);
- }
+_empty.style.display = 'none';
 
- counter++;
-  }
+      keys.forEach( index =>{
+        // alert(index);
+         let user = JSON.parse(window.localStorage.getItem(index));
+  taskComponent(user.task,index,index,user.deadline,user.deadline,user.time);
+  formatDate(user.deadline,user.time,index);
+      });
 
+
+ 
+ 
+ 
+
+
+
+// alert(keys);
   var values=[...keys];
-
-
-  pending_tasks = counter
+// alert('values'+values);
+if(keys.length>0){
+  let c = parseInt(values[keys.length-1]);
+ // alert('c is '+typeof(c)+ ++c);
+  pending_tasks =c+1;
+  // alert('1 pending task is  '+ pending_tasks);
+ 
+}else{
+  // alert('2 pending task is'+ counter);
+  pending_tasks = 0;
+}
   //(keys[counter-1])>0? counter+1:0;  
 
 
@@ -230,52 +255,6 @@ let counter = 0,
         else{
    _empty.style.display = 'none';
            
-  //Creating the deadline Counter
- 
- //aaaasdafffffff let deadline = `${_date.value} ${_time.value}:00`;
-
- //Finding dealine
-  // let deadline = _date.value.split('-');
-  
-  //   deadline.reverse();
-
-  //   let temp = deadline[0]+',';
-  //   deadline[0] = deadline[1];
-  //   deadline[1] = temp; 
-
-  //   var months = ['jan','feb','mar','Apr','may','jun','july','aug','sept','oct','nov','dec'];
-  //   deadline[0] = months[deadline[0]-1];
-  //   var end = `${deadline[0]} ${deadline[1]} ${deadline[2]} ${_time.value}:00 `;
-
-      //var end = formatDate(_date.value,_time.value)
-      // var _deadline = new Date(end).getTime();  
-      // setTimer(_deadline,pending_tasks);
-
-    // console.log(end);
-  //console.log(_date.value.split('-')); //gina niga nagi gina gani inag anig 
-   
-
-      //Creating a new Event container
-
-      //     var container = document.createElement("div");
-      //         container.className = 'child';
-      //         container.style.border= `2px solid ${colors[x]}`;
-      //         parent.appendChild(container);
-    
-      // //Creating the header for event container
-      //      var header = document.createElement("div");
-      //       header.innerHTML= "Time Left: " + _time.value + " <div class='root'> </div>" + _date.value;
-      //       header.style.backgroundColor = colors[x];
-      //       header.className = `root root${pending_tasks}`;
-      //       console.log(header.innerHTML);
-      //       container.appendChild(header);
-// //////////////////////////////////////////////////////////////////////
-
-  // Returns the time from midnight Jan 1 1970 to a specified deadline in milliseconds
-  
-   
-  // alert('countdown.js is here');
-
   taskComponent(task.value,x,pending_tasks,_date.value,_time.value);
   formatDate(_date.value,_time.value,pending_tasks);
  // Save the data in the localStorage 
@@ -284,77 +263,7 @@ let counter = 0,
    saved_data.time      = _time.value;
 
     window.localStorage.setItem(pending_tasks,JSON.stringify(saved_data)); 
-// //////////////////////////////////////////////////////////////////////
-       //Creating a body for the new task      
-      //       let event = document.createElement('div');
-      //       event.className="task"
-      //       event.innerHTML=task.value;
-      //       container.appendChild(event);
-
-      //   //Creating a  footer for the container  
-      //       var footer = document.createElement('div');
-      //       footer.innerHTML= "<span> DeadLine: &nbsp" + formatDate(_date.value,_time.value); + "</span> ";
-      //       footer.style.backgroundColor = colors[x];
-      //       footer.style.color = "white";
-      //       footer.className = "foot"
-      //       container.appendChild(footer);
-      //   //Containing the delete and Complete
-
-      //   //creating the Task Completed and Delete Task button
-      //       let _taskCompleted = document.createElement('button');
-      //       _taskCompleted.innerHTML= 'Task Completed';
-      //       _taskCompleted.style.padding = '10px';
-      //       _taskCompleted.className = `completed completed${pending_tasks}`;
-      //       footer.appendChild(_taskCompleted);
-
-      //       _taskCompleted.onclick=function(){
-      //         saved_data.done = 1;
-      //         swal("Good job!", `You deleted ${pending_tasks}  ${pending_tasks>1?'tasks': 'task'} Today!`, "success");             
-      //         this.innerHTML = " DONE ";
-      //         this.parentNode.removeChild(`${deleted.parentNode}`);
-      //       }
-
-      // //Creating the Task Deleted button
-      //   let _taskdeleted = document.createElement('button');
-      //   _taskdeleted.innerHTML= 'Delete Task';
-      //   _taskdeleted.style.padding = '10px';
-      //   _taskdeleted.className = `deleted deleted${pending_tasks}`;
-      //   _taskdeleted.style.borderRadius="1px solid white";
-      //   footer.appendChild(_taskdeleted);
-       
-
-      //   // Deleting a Tasks is done here
-      //   _taskdeleted.onclick=() => {
-      //     swal({
-      //       title: "Are you sure?",
-      //       text: "Once deleted, you will not see this task again!",
-      //       icon: "warning",
-      //       buttons: true,
-      //       dangerMode: true,
-      //     })
-      //     .then((willDelete) => {
-      //       if (willDelete) {
-      //         swal("Task has been succesfully cancelled", {
-      //           icon: "success",
-      //         });
-
-              
-      //     // ...alert('about to remove child');
-      //     console.log(footer.parentNode);
-      //     let _node =footer.parentNode;
-      //     console.log(_node);  ;
-      //     _node.parentNode.removeChild(_node);
-      //      saved_data.deleted = 1;
-      //       } else {
-      //         swal("Your task is safe and still pending!");
-      //       }
-
-      //     });
-         
-      //   }
-                            
-      // Stying and passing data into the  the event header
-           
+    
                 ++x;
        
                 task.value = '';
