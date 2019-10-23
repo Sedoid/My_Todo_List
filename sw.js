@@ -22,6 +22,9 @@ self.addEventListener('install',(event)=>{
         caches.open(cacheName)
         .then(cache =>{
             return cache.addAll(resourcesToPrecache);
+        }).catch(error =>{
+            console.log('Failed to open a Promise ' + error );
+            return 0;
         })
     )
 });
