@@ -1,10 +1,13 @@
-//dynamically set the background color for
-//root
-//root div
-//header
-//footer
-
-
+// Registering the Service Workers
+  if('serviceWorker' in navigator){
+    console.log(window);
+    navigator.serviceWorker.register('./sw.js')
+    .then(reg =>{
+      console.log('Registered ',reg);
+    }).catch(err =>{
+      console.log('Registeration failed:', err);
+    });
+  }
 // window.localStorage.removeItem(1);
 let x = 0;
 let pending_tasks = 0;
