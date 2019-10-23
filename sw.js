@@ -1,8 +1,3 @@
-// Service Workers sit between your site an the network
-// it can intercept request to the network and divert them to the cache
-// when this happends, the fetch event is triggered
-// to respond to this event, we find the file we cached earlier
-
 
 const cacheName = 'cache-v1';
 const resourcesToPrecache = [
