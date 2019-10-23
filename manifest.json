@@ -1,6 +1,6 @@
 {
     "name": "Reminder",
-    "short_name" : "Reminder",
+    "short_name" : "keeping you time concious ;)",
     "icons":[
         {
             "src": "./android-chrome-192x192.png",
@@ -13,8 +13,8 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "red",
-    "background_color": "#ffffff",
+    "theme_color": "#d63031",
+    "background_color": "#eee",
     "start_url":"/",
     "display": "standalone",
     "orientation": "any"
