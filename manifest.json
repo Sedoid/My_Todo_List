@@ -3,18 +3,18 @@
     "short_name" : "Reminder",
     "icons":[
         {
-            "src": "",
+            "src": "/android-chrome-192x192.png",
             "sizes": "192x192",
-            "type": ""
+            "type": "image/png"
         },
         {
-            "src":"",
+            "src":"/android-chrome-512x512.png",
             "sizes":"512x512",
-            "type": ""
+            "type": "image/png"
         }
     ],
     "theme_color": "red",
-    "background_color": "green",
+    "background_color": "#ffffff",
     "start_url":"/",
     "display": "standalone",
     "orientation": "any"
