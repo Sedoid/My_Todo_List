@@ -15,7 +15,7 @@
     ],
     "theme_color": "#d63031",
     "background_color": "#eee",
-    "start_url":"/",
+    "start_url":"https://sedoid.github.io/My_Todo_List/",
     "display": "standalone",
     "orientation": "any"
 }

@@ -6,7 +6,7 @@ const resourcesToPrecache = [
     './assets/images/scloud0.png',
     './assets/scripts/sweetalert.min.js',
     './assets/scripts/todo.js',
-    './assets/styles/home.css'
+    './assets/styles/home.css',
 ]
 
 
