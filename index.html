@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
 
+    <origin> </origin>
   
 </head>
 <body>  
@@ -56,5 +57,17 @@
 <script src="sw.js"> </script>
 <script src="./assets/scripts/sweetalert.min.js"></script> 
  <script src="assets/scripts/todo.js"> </script> 
+ <script>
+       if('serviceWorker' in navigator){
+    console.log(window);
+    navigator.serviceWorker.register('./sw.js')
+    .then(reg =>{
+      console.log('Registered ',reg);
+    }).catch(err =>{
+      console.log('Registeration failed:', err);
+    });
+  }
+
+ </script>
 </body>
 </html>

@@ -1,14 +1,5 @@
 var audio = document.querySelector('audio');
   // Registering the Service Workers
-  if('serviceWorker' in navigator){
-    console.log(window);
-    navigator.serviceWorker.register('./sw.js')
-    .then(reg =>{
-      console.log('Registered ',reg);
-    }).catch(err =>{
-      console.log('Registeration failed:', err);
-    });
-  }
 
   //
 
