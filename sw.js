@@ -1,7 +1,7 @@
 
 const cacheName = 'cache-v1';
 const resourcesToPrecache = [
-    './',
+    'https://github.com/Sedoid/My_Todo_List.git',
     './index.html',
     './assets/images/scloud0.png',
     './assets/scripts/sweetalert.min.js',

@@ -3,23 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="#d63031"> 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ToDo_List App</title>
+    <title>ToDo_List App</title> 
     <link rel="stylesheet" href="assets/style/home.css" />
     <link rel="manifest" href="./manifest.json" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
 
-    <!-- <link rel="manifest" href="/site.webmanifest"> -->
+  
 </head>
 <body>  
          <header>
              <img src="assets/images/scloud0.png" height="100px" width="200px" />
             
-             
-            <h1> TODO LIST APP </h1>
+            <div class="top">
+                 <h1> TODO LIST APP </h1>
+                <a id="ringtone">
+                    <input type="file" accept="audio/*" capture/>
+                    Select Ringtone<img src="assets/images/speaker.png" />
+                </a> 
+                    <audio autoplay="false"> </audio>
+            </div>
+           
 
              <form>
             <label> ToDo Task:</label>

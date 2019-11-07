@@ -1,4 +1,5 @@
-// Registering the Service Workers
+var audio = document.querySelector('audio');
+  // Registering the Service Workers
   if('serviceWorker' in navigator){
     console.log(window);
     navigator.serviceWorker.register('./sw.js')
@@ -8,6 +9,26 @@
       console.log('Registeration failed:', err);
     });
   }
+
+  //
+
+  function setTone(){
+ //   var audio = document.querySelector('audio');
+    let file_holder = document.querySelector("input[type='file']");
+    console.log(file_holder.files[0].name);
+    let audiosrc = URL.createObjectURL(file_holder.files[0]); 
+    audio.src = audiosrc;  
+    audio.autoplay = false;
+  }
+
+// Handle the RingTone ability
+  const ringtone = document.querySelector('#ringtone');
+  ringtone.addEventListener('click',function(){
+      let file_holder = document.querySelector("input[type='file']");
+      file_holder.click();
+    file_holder.addEventListener('change',setTone);
+  });
+
 // window.localStorage.removeItem(1);
 let x = 0;
 let pending_tasks = 0;
@@ -27,16 +48,16 @@ function setTimer (time_up,site){
     function(){
       var now = new Date().getTime(); 
       var t = time_up-now;
-   if(t < 0){
+   if(t <= 0){
     
      clearInterval(this);
      document.querySelector(`.root${site}`).innerHTML =
       '<span style="color: red"> EXPIRED</span>';
-
+    //audio.play();
     document.querySelector(`.completed${site}`).style.display="none";
  }else{
     
-     // Returns the time from midnight jan 1 ao70 to the current time in  milliseconds
+  // Returns the time from midnight jan 1 ao70 to the current time in  milliseconds
   
 
 // Compute the lenght of time from now the deadline in milliseconds 
@@ -62,6 +83,9 @@ let root = document.querySelector(`.root${site}`);
 + ((minutes>0)?'<div>  '+ minutes  + ' Min </div>  ':'')
 + '<div>  '+ seconds  + 'sec </div>  ';
 
+if(days==0 && hours ==0 && minutes <= 5){
+  audio.play();
+}
 
  }
 }, 1000);
@@ -88,7 +112,6 @@ function formatDate(date,time,pending_tasks){
 
 window.onload = function (){
  var task = document.getElementById('task');
- 
  
     var btn = document.getElementById('btn');
     var _time = document.getElementById('_time');

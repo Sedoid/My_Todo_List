@@ -12,9 +12,29 @@ hr{
     margin-bottom: 3px;
 }
 
+input[type='file']{
+    display: none;
+}
+
 body{
     background-color: #eee;
 }
+    .top img{
+        width: 50px;
+        height: 50px;   
+        margin-right: 50px;   
+    }
+
+    .top button{
+        color:white;
+        background-color: (0,0,0,0);
+    }
+
+    .top{
+        display: flex;
+         flex-direction: row;
+        justify-content: space-between;
+    }
 header{
     box-sizing: border-box;
     background-color: rgb(0, 102, 255);
@@ -27,7 +47,6 @@ header{
 
 header h1{
     padding: 10px;
-    background-image: url('../images/cloud0.png');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center right;
