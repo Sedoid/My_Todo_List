@@ -137,12 +137,13 @@ window.onload = function (){
     footer.style.color = "white";
     footer.className = "foot"
     container.appendChild(footer);
+
     //Containing the delete and Complete
     
     //creating the Task Completed and Delete Task button
     let _taskCompleted = document.createElement('button');
-    _taskCompleted.innerHTML= 'Task Completed';
-    _taskCompleted.style.padding = '10px';
+    _taskCompleted.innerHTML= 'Completed';
+   _taskCompleted.style.height = 50
     _taskCompleted.className = `completed completed${pending_tasks}`;
     footer.appendChild(_taskCompleted);
     
@@ -156,8 +157,9 @@ window.onload = function (){
     
     //Creating the Task Deleted button
     let _taskdeleted = document.createElement('button');
-    _taskdeleted.innerHTML= 'Delete Task';
-    _taskdeleted.style.padding = '10px';
+    _taskdeleted.innerHTML= 'Delete';
+ 
+
     _taskdeleted.className = `deleted deleted${pending_tasks}`;
     _taskdeleted.style.borderRadius="1px solid white";
     footer.appendChild(_taskdeleted);

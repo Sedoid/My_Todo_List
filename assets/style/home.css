@@ -11,7 +11,7 @@ hr{
     box-shadow: 1px 1px 2px rgb(0, 102, 255);
     margin-bottom: 3px;
 }
-
+/* 
 input[type='file']{
     display: none;
 }
@@ -99,7 +99,84 @@ form button{
     padding: 7px 10px;
     border-radius: 3px;
     border: 1px solid #ccc;
+} */
+
+
+input[type='file']{
+    display: none;
 }
+
+body{
+    background-color: #eee;
+}
+    .top img{
+        width: 50px;
+        height: 50px;   
+        margin-right: 50px; 
+        align:middle;  
+    }
+
+    .top button{
+        color:white;
+        background-color: (0,0,0,0);
+    }
+
+    .top{
+        display: flex;
+         flex-direction: row;
+        justify-content: space-between;
+    }
+  
+header{
+ 
+   
+}
+
+header h1{
+  
+}
+
+
+ form{
+padding-left: 2vw;
+ 
+ color: white;
+}
+
+form label{
+}
+
+form textarea{
+  
+   
+} 
+
+form input{
+    
+}
+
+form input:focus{
+   
+}
+
+form button{
+   
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .parent{
@@ -144,13 +221,16 @@ form button{
    flex-direction: row;
    justify-content: space-between;
 }
+
+
 .foot span{
     padding-top:7px;
     flex-grow: 1;
 }
+
+
 .foot button{
     align-items: right;
-    ;
 }
 
 .root{
@@ -202,7 +282,52 @@ form button{
     background-color: #c0392b;
 }
 
+
+
+
+
 @media screen and (max-width: 500px){
+
+  
+    h1{
+        width: 90%;
+        flex-grow:1;
+        font-size: 2em;
+    }
+    h2{
+        font-size: 1.4em;
+    }
+input[type='files']{
+    display: none;
+}
+
+.top{
+    display: flex;
+    justify-content: space-between;
+ 
+}
+
+
+header span{
+    margin-left: 1vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
     .child{
         width: 95%;
     }
@@ -214,4 +339,55 @@ form button{
     form textarea{
         width: 90%;
     }
+
+    .child div{
+       padding: -10px !important;   
+    }
+
+
+.foot{
+   
+    /* padding:10px; */
+   clear: both;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+}
+
+.foot button{
+   padding: 0 5px;
+}
+
+
+    .root div{
+        padding: 7px 3px;
+    }
+
+   
+    
+    .completed{
+        height: 50px;
+        border-radius: 5px;
+        background-color: #2ecc71;
+        color: white; 
+        border: 1px solid white;
+     
+    }
+    
+    .completed:hover{
+          transition-duration: 1s;
+        font-size: 10px;
+       background-color: #218d4e;
+       
+    }
+    .deleted{
+        width: 9em;
+        margin-left:2em;
+        color:white;
+        border: 1px solid white;
+        border-radius: 5px;
+        background-color: #c0392b;
+    }
+    
+    
 }
