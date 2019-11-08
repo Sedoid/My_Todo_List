@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDo_List App</title> 
+    <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style/materialize.css" />
     <link rel="stylesheet" href="assets/style/home.css" />
     <link rel="manifest" href="./manifest.json" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
@@ -17,16 +19,10 @@
 </head>
 <body>  
          <header>
-             <img src="assets/images/scloud0.png" height="100px" width="200px" />
-            
+                   
             <div class="top">
-                 <h1> TODO LIST APP </h1>
-                <a id="ringtone">
-                    <input type="file" accept="audio/*" capture/>
-                    Select Ringtone<img src="assets/images/speaker.png" />
-                </a>                    
+                 <h1> REMINDER </h1>                  
             </div>
-            <audio autoplay="false"> </audio>
 
              <!-- <form>
             <label> ToDo Task:</label>
@@ -51,7 +47,15 @@
             </a>
             
         </form> -->
-        <div class="row">
+
+
+
+        <!-- <div class="row">
+           <audio autoplay="false"> </audio>
+           <a id="ringtone">
+                    <input type="file" accept="audio/*" capture/>
+                    Select Ringtone<img src="assets/images/speaker.png" />
+                </a>  
           <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
@@ -66,13 +70,31 @@
                <input type="text" id="_time" class="timepicker" placeholder="Set time"/> 
                 <input type="text" class="datepicker" placeholder="Set Date"> 
             <br />
+            <a class="waves-effect waves-light purple btn-large"><i class="material-icons left">edit</i>Add Task</a>
           </form>
-          <p><br />&nbsp</br />&nbsp&nbsp&nbsp<a class="btn-floating btn-large waves-effect waves-light red" id="btn"> 
-            <span style="font-size:1.5em">+</span> 
-            </a></p>
-          
-        </div>
+             
+        </div> -->
+
+
+
         </header>
+
+
+
+        <div class="fixed-action-btn">
+          <a class="btn-floating btn-large purple pulse" id="btn">
+            <i class="large material-icons">add</i>
+          </a>
+        </div>
+
+
+
+
+
+
+
+
+
        
     <div class="parent">
       <h2> Pending Tasks:<span> 0 </span></h2>
