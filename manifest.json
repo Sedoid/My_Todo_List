@@ -13,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#d63031",
+    "theme_color": "purple",
     "background_color": "#eee",
     "start_url":"https://sedoid.github.io/My_Todo_List/",
     "display": "standalone",
