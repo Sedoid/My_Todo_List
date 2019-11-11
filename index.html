@@ -14,11 +14,11 @@
     <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
 
-    <origin> </origin>
+    
   
 </head>
 <body>  
-         <header>
+         <header class="z-depth-3">
                    
             <div class="top">
                  <h1> REMINDER </h1>                  
@@ -75,14 +75,19 @@
              
         </div> -->
 
-
-
+        
+        
+          <ul>
+            <a  class="waves-effect waves-#black btn-flat active">  <li>PENDING <span class="ibadge">8</span> </li> </a>
+            <a  class="waves-effect waves-#black btn-flat"> <li>COMPLETED <span class="ibadge">2</span>  </li></a>
+            <a  class="waves-effect waves-#black btn-flat">  <li>DELETED <span class="ibadge">0</span></li></a>
+          </ul>
         </header>
 
 
 
         <div class="fixed-action-btn">
-          <a class="btn-floating btn-large purple pulse" id="btn">
+          <a class="btn-floating btn-large purple pulse waves-effect" id="btn">
             <i class="large material-icons">add</i>
           </a>
         </div>
@@ -91,18 +96,49 @@
 
 
 
+<div id="container">
+
+
+    <div class="section">
+
+      <div class="part_1">
+          <div class="parent">
+              <h2> Pending Tasks:<span> 0 </span></h2>
+                <hr />
+              <p> You have not created any task yet....</p>
+              <p><br />Mern,  Style working on the style!!</p>
+            </div>
+            
+      </div>
+
+      <div class="part_2">
+          <div class="parent">
+              <h2> Completed Tasks:<span> 0 </span></h2>
+                <hr />
+              <p> You have not created any task yet....</p>
+              <p><br />Mern,  Style working on the style!!</p>
+            </div>
+            
+      </div>
+      <div class="part_3">
+          <div class="parent">
+              <h2> Deleted Tasks:<span> 0 </span></h2>
+                <hr />
+              <p> You have not created any task yet....</p>
+              <p><br />Mern,  Style working on the style!!</p>
+            </div>
+            
+      </div>
 
 
 
-
-       
-    <div class="parent">
-      <h2> Pending Tasks:<span> 0 </span></h2>
-<hr />
-      <p> You have not created any task yet....</p>
-      <p><br />Mern,  Style working on the style!!</p>
-    </div>
-        </div>
+      
+      </div>
+             
+         
+           
+      
+</div>
 
   
 <script src="sw.js"> </script>
@@ -111,6 +147,7 @@
 <script src="./assets/scripts/sweetalert.min.js"></script> 
 <script src="./assets/scripts/style.js"></script>
  <script src="assets/scripts/todo.js"> </script> 
+ <script src="./assets/scripts/scroll.js"> </script>
  <script>
        if('serviceWorker' in navigator){
     console.log(window);

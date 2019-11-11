@@ -108,6 +108,8 @@ input[type='file']{
 
 body{
     background-color: #eee;
+    width:100vw;
+    overflow:hidden;
 }
     .top img{
         width: 50px;
@@ -129,7 +131,7 @@ body{
   
 header{
     background-color: purple;
-    color: white;
+    color: white;    
 }
 
 header h1{
@@ -287,15 +289,49 @@ form button{
 
 
 @media screen and (max-width: 500px){
-
+    body{
+        background-color:white;
+        overflow:hidden;
+        width: 100vw;
+        max-height: 100vh;
+        /* overflow: hidden; */
+    }
     header{
         display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        padding: 0 3vw;
-        height: 27vh;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        height: 20vh;
+        /* box-shadow: 3px 2px 3px #bbb,3px 2px 3px #bbb,3px 2px 3px #bbb; */
+    }
+    header ul{
+        width: 100vw;
+        display: flex;
+        flex-direction:row;
+        /* text-align: center; */
+    }
+    header ul a{
+        font-size: 13px !important;
+        color:white !important;
+        flex-grow: 1;
+        border-radius: 0 !important;
+        
+    }
+
+    header ul a span{
+        text-align: left;
+        color:#ccc;
+        /* background-color: #ccc; */
+        padding: 3px 6px; 
+        border-radius: 60px;
+        margin-bottom: 5px;
+    }
+    .active{
+        border-bottom: 3px solid white !important;
     }
     h1{
+        font-family: sans-serif;
+        padding-left: 14px;
         width: 90%;
         flex-grow:1;
         font-size: 2em;
@@ -313,12 +349,36 @@ input[type='files']{
  
 }
 
+.section{
+    display:flex;
+    height: 80vh;
+    padding:0;
+    background-color: #c0392b;
+    width: 300vw;
+    overflow: auto;
 
-header span{
-    margin-left: 1vw;
 }
 
+.section div{
+    width: 100vw;
+}
 
+.part_1{
+    background-color:white;
+}
+
+.part_2{
+   background-color: orange; 
+}
+
+.part_3{
+  background-color:green;  
+}
+#container{
+    
+    width: 100vw;
+    overflow: scroll;
+}
 
 
 
