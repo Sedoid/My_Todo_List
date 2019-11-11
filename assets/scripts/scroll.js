@@ -6,7 +6,6 @@ let slider = document.querySelector('.section'),
     slider_width = slider.scrollWidth;
     blog = document.querySelector('.part_1').scrollWidth;
 
-add.addEventListener('click', scrollEffect)
 
 window.onclick=function(event){
     // alert('you clicked');
@@ -36,25 +35,25 @@ window.onclick=function(event){
         nav[0].classList.remove('active');
         nav[1].classList.remove('active');
         nav[2].classList.add('active');
-        
+
         container.scrollTo({top:0,left:blog*2,behavior:"smooth"});
       } 
      
 }
-console.log(nav)
 
-container.scrollTo(0,0)
-function scrollEffect(){
-    console.log('about to scroll')
-    container.scrollTo({top:0,left:blog*2,behavior:"smooth"})
 
-    container.onscroll=function(event){
-        console.log('scrolling')
-        console.log(event)
-       //container.scrollTo({top:0,left:blog*2,behavior:"smooth"}) 
-    }
 
-}
+// function scrollEffect(){
+//     console.log('about to scroll')
+//     container.scrollTo({top:0,left:blog*2,behavior:"smooth"})
+
+//     container.onscroll=function(event){
+//         console.log('scrolling')
+//         console.log(event)
+//        //container.scrollTo({top:0,left:blog*2,behavior:"smooth"}) 
+//     }
+
+// }
 
 
 //console.log("combined: "+ slider.scrollWidth + "  single: " + blog.scrollWidth);
