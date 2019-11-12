@@ -1,4 +1,4 @@
-console.log('holvfggfga');
+
 let slider = document.querySelector('.section'),
     container = document.querySelector('#container'),
     nav = document.querySelectorAll('ul a'),
@@ -42,6 +42,21 @@ window.onclick  = function(event){
 
       } 
      
+      if(event.toElement.innerHTML == 'add'){
+        document.querySelector('#btn').style.display = "none";
+        let view = document.querySelector('.add');
+
+          view.classList.add('add_item');
+          view.classList.add('animated');
+          view.classList.add('slideInUp');
+
+          setTimeout(function(){
+            document.querySelector('header ul').style.display = "none";
+          
+          },500);
+           
+      }
+    
 }
 
 container.addEventListener('scroll',function(){
@@ -59,7 +74,7 @@ container.addEventListener('scroll',function(){
      //  container.scrollTo({top:0,left:0,behavior:"smooth"});
   } 
 
-if(this.scrollLeft > blog && this.scrollLeft<blog*2)
+if(this.scrollLeft >= blog && this.scrollLeft<blog*2)
   {       
     console.log('hola')
       nav[0].classList.remove('active');
@@ -81,4 +96,3 @@ if(this.scrollLeft > blog && this.scrollLeft<blog*2)
   } 
 
 }) 
-

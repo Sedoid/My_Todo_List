@@ -296,3 +296,15 @@ console.log(saved_data);
 
 
 }
+
+window.onclick = function(event){
+ // this.
+  console.log(event.target)
+}
+
+let add_Item= document.getElementById('btn')
+
+add_Item.onclick =function(){
+  console.log('here')
+  alert('button clicked')
+}

@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta description= "My todo app" 
+    <meta name ="description" content= "My Todo app progressive web app" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ToDo_List App</title> 
+    <link rel = "stylesheet" href="./node_modules/animate.css/animate.min.css">
     <link href="https://fonts.googleapis.com/css?family=Acme&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/style/materialize.css" />
     <link rel="stylesheet" href="assets/style/home.css" />
@@ -24,58 +25,6 @@
             <div class="top">
                  <h1> REMINDER </h1>                  
             </div>
-
-             <!-- <form>
-            <label> ToDo Task:</label>
-            <br />
-            <div class="row">
-                 <textarea placeholder="What do you want to Do" id="taskarea1"> </textarea> 
-                <label for="textarea1"> What do you want to do</label>
-            </div>
-           
-            <br />
-            <br />
-            <label>Set DeadLine:</label>
-            <br />
-           <input type="text" id="_time" class="timepicker" value="00:00" /> 
-           <input id="_date" type="date"  />
-            <br />
-            
-            <br />
-            <button type="button" id="btn">Add Task</button>
-            <a class="btn-floating btn-large waves-effect waves-light red" id="btn"> 
-            <span style="font-size:1.5em">+</span> 
-            </a>
-            
-        </form> -->
-
-
-
-        <!-- <div class="row">
-           <audio autoplay="false"> </audio>
-           <a id="ringtone">
-                    <input type="file" accept="audio/*" capture/>
-                    Select Ringtone<img src="assets/images/speaker.png" />
-                </a>  
-          <form class="col s12">
-            <div class="row">
-              <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                <label for="textarea1">What do you want todo!...</label>
-              </div>
-
-              
-            </div>
-              <label>Set DeadLine:</label>
-                <br />
-               <input type="text" id="_time" class="timepicker" placeholder="Set time"/> 
-                <input type="text" class="datepicker" placeholder="Set Date"> 
-            <br />
-            <a class="waves-effect waves-light purple btn-large"><i class="material-icons left">edit</i>Add Task</a>
-          </form>
-             
-        </div> -->
-
         
         
           <ul>
@@ -136,7 +85,40 @@
       
       </div>
              
-         
+        <div class="add">
+             <form>
+            <label> ToDo Task:</label>
+            <br />
+            <div class="row">
+                 <textarea placeholder="What do you want to Do" id="taskarea1"> </textarea> 
+                <label for="textarea1"> What do you want to do</label>
+            </div>
+           
+            <br />
+            <br />
+            <label>Set DeadLine:</label>
+            <br />
+           <input type="text" id="_time" class="timepicker" value="00:00" /> 
+           <input id="_date" type="date"  />
+            <br />
+            
+            <br />
+                     
+            
+        </form> 
+
+        <div class="submit">
+          <button class="btn waves-effect waves-light" type="submit" name="action">Set
+            <i class="material-icons right">alarm_on</i>
+          </button>
+
+          <button class="btn waves-effect waves-light" type="submit" name="action">Cancel
+            <i class="material-icons right">alarm_off</i>
+          </button>
+        </div>
+       
+
+        </div> 
            
       
 </div>
