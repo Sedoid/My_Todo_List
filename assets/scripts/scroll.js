@@ -44,38 +44,41 @@ window.onclick  = function(event){
      
 }
 
-container.addEventListener('scroll',scrollEffect) 
+container.addEventListener('scroll',function(){
 
+ let  blog = document.querySelector('.part_1').scrollWidth; 
+  //console.log(blog +" and "+ this.scrollLeft)
 
-function scrollEffect(){
-  if(false)
+  if(this.scrollLeft < blog)
   {      
-
+      console.log('hello');
       nav[1].classList.remove('active');
       nav[2].classList.remove('active');
        nav[0].classList.add('active');
       
-       container.scrollTo({top:0,left:0,behavior:"smooth"});
+     //  container.scrollTo({top:0,left:0,behavior:"smooth"});
   } 
 
-if(this.scrollLeft > 10)
+if(this.scrollLeft > blog && this.scrollLeft<blog*2)
   {       
+    console.log('hola')
       nav[0].classList.remove('active');
       nav[2].classList.remove('active');
       nav[1].classList.add('active');
   
-      this.scrollTo({top:0,left:411,behavior:"smooth"});
-      this.removeEventListener('scroll', scrollEffect)
+  //    this.scrollTo({top:0,left:411,behavior:"smooth"});
   } 
 
-  if(false)
-  {
-    
+  if(this.scrollLeft == blog*2)
+  {  
+    console.log('hiya')
     nav[0].classList.remove('active');
     nav[1].classList.remove('active');
     nav[2].classList.add('active');
 
-    container.scrollTo({top:0,left:blog*2,behavior:"smooth"});
+  //  container.scrollTo({top:0,left:blog*2,behavior:"smooth"});
 
   } 
-}
+
+}) 
+
