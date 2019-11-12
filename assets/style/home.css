@@ -464,7 +464,7 @@ input[type='files']{
     
 .add_item{
     /* background-color: rgba(190, 184, 186, 0.993); */
-    padding: 4em 1em;
+    
     border: 2px solid green;
     background-color: #fff;
     position: absolute;
@@ -483,7 +483,6 @@ input[type='files']{
 .add_item .submit{
     display: flex;
     flex-direction: row;
-    padding: 0 2em;
     justify-content: space-between;
 }
 
