@@ -288,7 +288,7 @@ form button{
 
 
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: 900px){
     body{
         background-color:white;
         overflow:hidden;
@@ -454,6 +454,13 @@ input[type='files']{
         border-radius: 5px;
         background-color: #c0392b;
     }
+
+.stick{
+    background-color: brown;
+    position: -webkit-sticky;
+    position: sticky;
+    left:0;
+}
     
     
 }

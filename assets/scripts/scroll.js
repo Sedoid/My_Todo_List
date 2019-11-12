@@ -4,16 +4,16 @@ let slider = document.querySelector('.section'),
     nav = document.querySelectorAll('ul a'),
     add = document.querySelector('#btn'),
     slider_width = slider.scrollWidth;
-    blog = document.querySelector('.part_1').scrollWidth;
+    blog = document.querySelector('.part_1').scrollWidth;  
+   
+    
+// scrollEffect(); 
 
+window.onclick  = function(event){
 
-window.onclick=function(event){
-    // alert('you clicked');
-    console.log((event.target == nav[1] || this.event.target.parentNode == nav[1]))
-
-    if((event.target == nav[0] || this.event.target.parentNode == nav[0]))
+    if((event.target == nav[0] || this.event.target.parentNode == nav[0] || container.scrollLeft < 200))
       {      
-        
+  
           nav[1].classList.remove('active');
           nav[2].classList.remove('active');
            nav[0].classList.add('active');
@@ -28,32 +28,54 @@ window.onclick=function(event){
           nav[1].classList.add('active');
 
           container.scrollTo({top:0,left:blog,behavior:"smooth"});
+
       } 
 
       if((event.target == nav[2] || this.event.target.parentNode == nav[2]))
       {
+        
         nav[0].classList.remove('active');
         nav[1].classList.remove('active');
         nav[2].classList.add('active');
 
         container.scrollTo({top:0,left:blog*2,behavior:"smooth"});
+
       } 
      
 }
 
+container.addEventListener('scroll',scrollEffect) 
 
 
-// function scrollEffect(){
-//     console.log('about to scroll')
-//     container.scrollTo({top:0,left:blog*2,behavior:"smooth"})
+function scrollEffect(){
+  if(false)
+  {      
 
-//     container.onscroll=function(event){
-//         console.log('scrolling')
-//         console.log(event)
-//        //container.scrollTo({top:0,left:blog*2,behavior:"smooth"}) 
-//     }
+      nav[1].classList.remove('active');
+      nav[2].classList.remove('active');
+       nav[0].classList.add('active');
+      
+       container.scrollTo({top:0,left:0,behavior:"smooth"});
+  } 
 
-// }
+if(this.scrollLeft > 10)
+  {       
+      nav[0].classList.remove('active');
+      nav[2].classList.remove('active');
+      nav[1].classList.add('active');
+  
+      this.scrollTo({top:0,left:411,behavior:"smooth"});
+      this.removeEventListener('scroll', scrollEffect)
+  } 
 
+  if(false)
+  {
+    
+    nav[0].classList.remove('active');
+    nav[1].classList.remove('active');
+    nav[2].classList.add('active');
 
-//console.log("combined: "+ slider.scrollWidth + "  single: " + blog.scrollWidth);
+    container.scrollTo({top:0,left:blog*2,behavior:"smooth"});
+
+  } 
+}
