@@ -490,6 +490,7 @@ input[type='files']{
     padding: 1px;
     font-size: 1.18em;
    color: rgb(14, 4, 14);
+   font-family: 'Courier New', Courier, monospace;
 
 }
 .btn {
@@ -522,10 +523,22 @@ i.icon_purple{
     border-color:rgb(234, 0, 255) !important;
     box-shadow: 2px 2px 2px purple !important; 
 }
+.input-field > label{
+    color:rgba(0,0,0,0.5) !important;
+}
 
 .datepicker-day-button{
     color: black;
 }
 
+.title{
+    background-color:black;
+    width: 78%;
+    padding:  1em;
+    font-size: 1.6em;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+    margin-bottom: 0.7em;
+}
 
 }
