@@ -515,7 +515,7 @@ i.icon_purple{
     color:red !important;
 }
 
-.validate{
+.validate, .time input, textarea{
     border-bottom: 1px solid rgb(168, 24, 168) !important;
 }
 .validate:focus{
