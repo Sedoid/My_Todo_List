@@ -301,7 +301,6 @@ form button{
     }
     header ul{
         width: 95vw;
-        height: 2.5em;
         display: flex;
         flex-direction:row;
         z-index: 1;
@@ -530,12 +529,16 @@ i.icon_purple{
     color:rgba(0,0,0,0.5) !important;
 }
 
+.active{
+    color:rgb(65, 21, 65)!important;
+}
+
 .datepicker-day-button{
     color: black;
 }
 
 .title{
-    position: absolute;
+    position: fixed;
     top: 1.5em;
     background-color:black;
     width: 78%;
@@ -543,15 +546,13 @@ i.icon_purple{
     font-size: 1.6em;
     font-family: 'Courier New', Courier, monospace;
     color: white;
-    margin-bottom: 0.7em;
+    margin-bottom:0.7em;
 }
 
 .timepicker-digital-display{
     background-color: rgb(49, 10, 49);
 }
-.timepicker-close{
-    /* color: rgb(90, 17, 90); */
-}
+
 .timepicker-tick{
     background-color: rgb(49, 10, 49,0.2);
 }
@@ -571,4 +572,9 @@ i.icon_purple{
     background-color: rgb(170, 32, 170);
     color: white !important;
 }
+
+::placeholder{
+    color: rgb(136, 90, 136);
+}
+
 }

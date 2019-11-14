@@ -1,4 +1,6 @@
-
+window.onload=function(){
+  document.getElementsByClassName('title')[0].style.display = "hidden"
+}
 let slider = document.querySelector('.section'),
     container = document.querySelector('#container'),
     set = document.querySelector('.create')
