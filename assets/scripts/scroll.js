@@ -53,11 +53,6 @@ window.onclick  = function(event){
           view.classList.add('animated');
           view.classList.add('slideInUp');
 
-          setTimeout(function(){
-           // alert('here')
-           //document.querySelector('header ul').style.display = "none";
-            document.querySelector('header ul').setAttribute('hidden',true);
-         },540);
            
       }
     
@@ -113,8 +108,6 @@ function slideDown(){
   view.classList.add('slideOutDown');
 
   setTimeout(function(){
-    // document.querySelector('header ul').style.display = "inline-block";
-    document.querySelector('header ul').setAttribute('hidden',false);
     document.querySelector('#btn').style.display = "inline-block";
   },150);
 }

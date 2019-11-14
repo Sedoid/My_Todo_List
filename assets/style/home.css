@@ -301,8 +301,10 @@ form button{
     }
     header ul{
         width: 95vw;
+        height: 2.5em;
         display: flex;
         flex-direction:row;
+        z-index: 1;
         /* padding: 0 1em; */
         margin: 0 auto;
         /* text-align: center; */
@@ -469,6 +471,7 @@ input[type='files']{
     background-image: url('../images/positive.jpg');
     background-size: cover;
     color: black;
+    z-index: 2;
 }
  
 
