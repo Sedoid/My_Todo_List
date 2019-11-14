@@ -108,15 +108,10 @@ input[type='file']{
 
 body{
     background-color: #eee;
-    width:100vw;
+    width:100vw !important;
     overflow:hidden;
 }
-    .top img{
-        width: 50px;
-        height: 50px;   
-        margin-right: 50px; 
-        align:middle;  
-    }
+  
 
     .top button{
         color:white;
@@ -305,9 +300,11 @@ form button{
         /* box-shadow: 3px 2px 3px #bbb,3px 2px 3px #bbb,3px 2px 3px #bbb; */
     }
     header ul{
-        width: 100vw;
+        width: 95vw;
         display: flex;
         flex-direction:row;
+        /* padding: 0 1em; */
+        margin: 0 auto;
         /* text-align: center; */
     }
     header ul a{
@@ -319,14 +316,14 @@ form button{
     }
 
     header ul a span{
-        text-align: left;
+        text-align: center;
         color:rgba(190, 184, 186, 0.993);
         /* background-color: #ccc; */
         padding: 3px 6px; 
         border-radius: 60px;
         margin-bottom: 5px;
     }
-    .active{
+    .activee{
         border-bottom: 3px solid white !important;
     }
     h1{
@@ -455,35 +452,64 @@ input[type='files']{
         background-color: #c0392b;
     }
 
-.stick{
-    background-color: brown;
-    position: -webkit-sticky;
-    position: sticky;
-    left:0;
-}
-    
+ 
 .add_item{
     /* background-color: rgba(190, 184, 186, 0.993); */
     
-    border: 2px solid green;
-    background-color: #fff;
+   /* // border: 2px solid green; */
+    /* background-color: #fff; */
     position: absolute;
     top:0;
     width: 100vw;
     height: 100vh;
     display:flex;
     flex-direction: column;
-    justify-content: space-between;
-}  
+    justify-content: space-around;
+    background-color: #218d4e;
+    background-image: url('../images/positive.jpg');
+    background-size: cover;
+    color: black;
+}
+ 
 
 .add_item form{
-    background-color:orangered;
+    /* background-color:orangered; */
+    width: 90%;
+    margin: 0 auto;
+    padding: 0 10px 0 15px;
+ 
 }
-
 .add_item .submit{
+    padding: 0 2em;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
+.add span{
+    padding: 1px;
+    font-size: 1.18em;
+   color: rgb(235, 50, 235);
+
+}
+.btn {
+    background-color: rgb(153, 10, 153);
+  
+}
+.btn span{
+    color: white;
+}
+.time{
+    display: flex;
+}
+
+.time i{
+    padding: 10px;
+}
+
+i.icon_purple{
+    color: purple !important;
+}
+
 
 }
