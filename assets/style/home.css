@@ -465,7 +465,8 @@ input[type='files']{
     height: 100vh;
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 3em 0 30% 0;
     background-color: #218d4e;
     background-image: url('../images/positive.jpg');
     background-size: cover;
@@ -475,6 +476,7 @@ input[type='files']{
  
 
 .add_item form{
+    position: relative;
     /* background-color:orangered; */
     width: 90%;
     margin: 0 auto;
@@ -538,7 +540,7 @@ i.icon_purple{
 }
 
 .title{
-    position: fixed;
+    /* position: absolute; */
     top: 1.5em;
     background-color:black;
     width: 78%;
@@ -567,7 +569,7 @@ i.icon_purple{
 }
 .datepicker-table td.is-selected{
     background-color: orange;
-}
+} 
 .datepicker-table td.is-selected{
     background-color: rgb(170, 32, 170);
     color: white !important;
@@ -575,6 +577,10 @@ i.icon_purple{
 
 ::placeholder{
     color: rgb(136, 90, 136);
+}
+
+input[type='files']{
+    display: 'none';
 }
 
 }
