@@ -535,6 +535,8 @@ i.icon_purple{
 }
 
 .title{
+    position: absolute;
+    top: 1.5em;
     background-color:black;
     width: 78%;
     padding:  1em;
@@ -544,4 +546,29 @@ i.icon_purple{
     margin-bottom: 0.7em;
 }
 
+.timepicker-digital-display{
+    background-color: rgb(49, 10, 49);
+}
+.timepicker-close{
+    /* color: rgb(90, 17, 90); */
+}
+.timepicker-tick{
+    background-color: rgb(49, 10, 49,0.2);
+}
+.timepicker-close{
+    color: rgb(170, 32, 170);;
+}
+.datepicker-date-display{
+    background-color: rgb(49, 10, 49);
+}
+.datepicker-cancel,.datepicker-done{
+    color:rgb(170, 32, 170);
+}
+.datepicker-table td.is-selected{
+    background-color: orange;
+}
+.datepicker-table td.is-selected{
+    background-color: rgb(170, 32, 170);
+    color: white !important;
+}
 }
