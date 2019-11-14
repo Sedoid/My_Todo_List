@@ -486,10 +486,10 @@ input[type='files']{
     justify-content: space-between;
 }
 
-.add span{
+.label{
     padding: 1px;
     font-size: 1.18em;
-   color: rgb(235, 50, 235);
+   color: rgb(14, 4, 14);
 
 }
 .btn {
@@ -509,6 +509,22 @@ input[type='files']{
 
 i.icon_purple{
     color: purple !important;
+}
+
+.input_field label{
+    color:red !important;
+}
+
+.validate{
+    border-bottom: 1px solid rgb(168, 24, 168) !important;
+}
+.validate:focus{
+    border-color:rgb(234, 0, 255) !important;
+    box-shadow: 2px 2px 2px purple !important; 
+}
+
+.datepicker-day-button{
+    color: black;
 }
 
 
