@@ -467,7 +467,7 @@ input[type='files']{
     flex-direction: column;
     justify-content: space-between;
     padding: 3em 0 30% 0;
-    background-color: #218d4e;
+    background-color: pink;
     background-image: url('../images/positive.jpg');
     background-size: cover;
     color: black;
@@ -503,6 +503,10 @@ input[type='files']{
 }
 .btn span{
     color: white;
+}
+
+.btn:focus{
+    background-color: red !important;
 }
 .time{
     display: flex;
@@ -556,7 +560,7 @@ i.icon_purple{
 }
 
 .timepicker-tick{
-    background-color: rgb(49, 10, 49,0.2);
+    /* background-color:#eee; */
 }
 .timepicker-close{
     color: rgb(170, 32, 170);;
@@ -582,5 +586,6 @@ i.icon_purple{
 input[type='files']{
     display: 'none';
 }
+
 
 }
