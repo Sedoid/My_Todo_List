@@ -13,12 +13,12 @@ var audio = document.querySelector('audio');
   }
 
 // Handle the RingTone ability
-  const ringtone = document.querySelector('#ringtone');
-  ringtone.addEventListener('click',function(){
-      let file_holder = document.querySelector("input[type='file']");
-      file_holder.click();
-    file_holder.addEventListener('change',setTone);
-  });
+  // const ringtone = document.querySelector('#ringtone');
+  // ringtone.addEventListener('click',function(){
+  //     let file_holder = document.querySelector("input[type='file']");
+  //     file_holder.click();
+  //   file_holder.addEventListener('change',setTone);
+  // });
 
 // window.localStorage.removeItem(1);
 let x = 0;
@@ -70,7 +70,7 @@ let root = document.querySelector(`.root${site}`);
 
  root.innerHTML = '<div> Time Left :  </div>'+
  ((days>0)? '<div>  ' + days     +  'Days </div>  ':'' )
-+((hours>0)? '<div>  '+ hours    + 'Hours </div>  ':'' )
++((hours>0)? '<div>  '+ hours    + 'Hrs </div>  ':'' )
 + ((minutes>0)?'<div>  '+ minutes  + ' Min </div>  ':'')
 + '<div>  '+ seconds  + 'sec </div>  ';
 
@@ -85,30 +85,58 @@ if(days==0 && hours ==0 && minutes <= 5){
 
 
 function formatDate(date,time,pending_tasks){
-  let deadline = date.split('-');
+console.log('date: '+date +'   time: '+ time)
+  let modulation = time.split('');
+  modulation.pop();
+  let letter = modulation.pop()
+
+  if( letter == 'P')
+      {
+      modulation =   modulation.join('');
+       let temp =  modulation.split(':')
+       temp[0] = parseInt(temp[0]) + 12;
+       temp[0]+=':';
+      // temp.push(':00');
+       time = temp.join('')
+      
+      //  alert(time)
+      }
+
+    //  alert(modulation.join)
+    // console.log(modulation.join(''))
+
+
+
+  // let deadline = date.split('-');
   
-    deadline.reverse();
+  //   deadline.reverse();
 
-    let temp = deadline[0]+',';
-    deadline[0] = deadline[1];
-    deadline[1] = temp; 
+  //   let temp = deadline[0]+',';
+  //   deadline[0] = deadline[1];
+  //   deadline[1] = temp; 
 
-    var months = ['jan','feb','mar','Apr','may','jun','july','aug','sept','oct','nov','dec'];
-    deadline[0] = months[deadline[0]-1];
-    var end = `${deadline[0]} ${deadline[1]} ${deadline[2]} ${time}:00 `;
+  //   var months = ['jan','feb','mar','Apr','may','jun','july','aug','sept','oct','nov','dec'];
+  //   deadline[0] = months[deadline[0]-1];
+  //   var end = `${deadline[0]} ${deadline[1]} ${deadline[2]} ${time}:00 `;
+ //   alert(time)
+  let end = `${date} ${time}:00 `;
+   // console.log(time)
     var _deadline = new Date(end).getTime();  
     setTimer(_deadline,pending_tasks);
     return end;
 }
 
-window.onload = function (){
- var task = document.getElementById('task');
+//window.onload = function (){
+
+ var task = document.getElementById('textarea');
  
-    var btn = document.getElementById('btn');
-    var _time = document.getElementById('_time');
-    var _date = document.getElementById('_date');
+    var btn = document.querySelector('.create');
+    var _time = document.querySelector('.timepicker');
+    var _date = document.querySelector('.datepicker');
     var parent = document.getElementsByClassName('parent')[0];
     var _empty = document.querySelector('p');
+
+
 
    function taskComponent(task,x,pending_tasks,date,time){
 
@@ -143,7 +171,7 @@ window.onload = function (){
     //creating the Task Completed and Delete Task button
     let _taskCompleted = document.createElement('button');
     _taskCompleted.innerHTML= 'Completed';
-   _taskCompleted.style.height = 50
+   _taskCompleted.style.height = 50;
     _taskCompleted.className = `completed completed${pending_tasks}`;
     footer.appendChild(_taskCompleted);
     
@@ -217,7 +245,7 @@ window.onload = function (){
     // alert('Hello I am here');
    
       
-    task.value = "";
+    //task.value = "";
     _date.value="";
 
 var counter = 0,
@@ -258,6 +286,10 @@ if(keys.length>0){
 
     btn.onclick = function(){
 
+      alert(task.value)
+      alert(_time.value)
+      alert(_date.value)
+        alert('you want to create an element');
         let color = Math.floor(Math.random()*colors.length);
         console.log(x);
 
@@ -295,16 +327,7 @@ console.log(saved_data);
      };
 
 
-}
 
-window.onclick = function(event){
- // this.
-  console.log(event.target)
-}
+//}
 
-let add_Item= document.getElementById('btn')
 
-add_Item.onclick =function(){
-  console.log('here')
-  alert('button clicked')
-}
