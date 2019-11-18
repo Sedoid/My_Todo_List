@@ -85,7 +85,7 @@ if(days==0 && hours ==0 && minutes <= 5){
 
 
 function formatDate(date,time,pending_tasks){
-console.log('date: '+date +'   time: '+ time)
+
   let modulation = time.split('');
   modulation.pop();
   let letter = modulation.pop()
@@ -102,24 +102,7 @@ console.log('date: '+date +'   time: '+ time)
       //  alert(time)
       }
 
-    //  alert(modulation.join)
-    // console.log(modulation.join(''))
-
-
-
-  // let deadline = date.split('-');
-  
-  //   deadline.reverse();
-
-  //   let temp = deadline[0]+',';
-  //   deadline[0] = deadline[1];
-  //   deadline[1] = temp; 
-
-  //   var months = ['jan','feb','mar','Apr','may','jun','july','aug','sept','oct','nov','dec'];
-  //   deadline[0] = months[deadline[0]-1];
-  //   var end = `${deadline[0]} ${deadline[1]} ${deadline[2]} ${time}:00 `;
- //   alert(time)
-  let end = `${date} ${time}:00 `;
+  let end = `${date}`;
    // console.log(time)
     var _deadline = new Date(end).getTime();  
     setTimer(_deadline,pending_tasks);
@@ -241,11 +224,9 @@ console.log('date: '+date +'   time: '+ time)
       return saved_data;
     }
 
-    
-    // alert('Hello I am here');
    
       
-    //task.value = "";
+    task.value = "";
     _date.value="";
 
 var counter = 0,
