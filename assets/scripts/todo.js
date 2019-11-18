@@ -286,10 +286,7 @@ if(keys.length>0){
 
     btn.onclick = function(){
 
-      alert(task.value)
-      alert(_time.value)
-      alert(_date.value)
-        alert('you want to create an element');
+
         let color = Math.floor(Math.random()*colors.length);
         console.log(x);
 
