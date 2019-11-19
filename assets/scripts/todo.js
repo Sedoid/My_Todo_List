@@ -24,8 +24,8 @@ var audio = document.querySelector('audio');
 let x = 0;
 let pending_tasks = 0;
 let Ongoing_tasks = 0;
-let colors =['#6D214F','#58B19F','#7f8c8d','#0652DD','#ED4C67','#2c2c54','#227093','#474787','#3498db','#8e44ad','#2c3e50','#40407a','#006266','#cc8e35','#192a56','#b33939','#e1b12c'];
-// alert(Math.floor(Math.random()*18));
+let colors =['#227093','#474787','#3498db','#8e44ad','#2c3e50','#40407a','#006266','#cc8e35','#192a56','#b33939','#e1b12c'];
+// alert(Math.floor(Math.random()*18)); '#6D214F','#58B19F','#7f8c8d','#0652DD','#ED4C67','#2c2c54',
 
   var saved_data ={
     done:0,
@@ -116,8 +116,11 @@ function formatDate(date,time,pending_tasks){
     var btn = document.querySelector('.create');
     var _time = document.querySelector('.timepicker');
     var _date = document.querySelector('.datepicker');
-    var parent = document.getElementsByClassName('parent')[0];
+    var parent = document.getElementsByClassName('parent')[0],
+        completed = document.getElementsByClassName('parent')[1],
+        _deleted = document.getElementsByClassName('parent')[2];
     var _empty = document.querySelector('p');
+ document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
 
 
 
@@ -160,9 +163,22 @@ function formatDate(date,time,pending_tasks){
     
     _taskCompleted.onclick=function(){
       saved_data.done = 1;
-      alert(saved_data.done);
+     // alert(saved_data.done);
+
+      console.log(saved_data)
+      let temp = this.parentNode.parentNode.classList.value;
+          temp = parseInt(temp)
+      let item = localStorage.getItem(temp)
+          item= JSON.parse(item);
+          item.done = 1;
+          localStorage.setItem(temp,JSON.stringify(item));
+      console.log(localStorage.getItem(temp))
+     
+      completed.appendChild(this.parentNode.parentNode)
+
       swal("Good job!", `You deleted ${pending_tasks}  ${pending_tasks>1?'tasks': 'task'} Today!`, "success");             
       this.innerHTML = " DONE ";
+
       this.parentNode.removeChild(`${deleted.parentNode}`);
     }
     
@@ -176,8 +192,9 @@ function formatDate(date,time,pending_tasks){
     footer.appendChild(_taskdeleted);
     
     
+    
     // Deleting a Tasks is done here
-    _taskdeleted.onclick=() => {
+    _taskdeleted.onclick=(event) => {
     swal({
     title: "Are you sure?",
     text: "Once deleted, you will not see this task again!",
@@ -187,32 +204,43 @@ function formatDate(date,time,pending_tasks){
     })
     .then((willDelete) => {
     if (willDelete) {
-      swal("Task has been succesfully cancelled", {
+      swal("Task has been succesfully Deleted", {
         icon: "success",
       });
+
+  //alert(event.target)
+      let temp = event.target.parentNode.parentNode.classList.value;
+          temp = parseInt(temp)
+          console.log(temp)
+      let item = localStorage.getItem(temp)
+          item= JSON.parse(item);
+          item.deleted = -1;
+          localStorage.setItem(temp,JSON.stringify(item));
+      console.log(localStorage.getItem(temp))
     
+      _deleted.appendChild(event.target.parentNode.parentNode)
       
   //  alert('about to remove child');
-    console.log(footer.parentNode);
-    let _node =footer.parentNode;
-    console.log(_node); 
+  //   console.log(footer.parentNode);
+  //   let _node =footer.parentNode;
+  //   console.log(_node); 
 
-    let keys = Object.keys(localStorage);
-    let del = _node.className;
-      // alert(del);
+  //   let keys = Object.keys(localStorage);
+  //   let del = _node.className;
+  //     // alert(del);
    
-    let c =del[0];
-    _node.parentNode.removeChild(_node);
+  //   let c =del[0];
+  //   _node.parentNode.removeChild(_node);
 
-   keys.forEach(index =>{
-      if(index == del[0]){
-        //  alert('about to remove'+ del[0]);
-        window.localStorage.removeItem(index);
-      }
-   });
+  //  keys.forEach(index =>{
+  //     if(index == del[0]){
+  //       //  alert('about to remove'+ del[0]);
+  //       window.localStorage.removeItem(index);
+  //     }
+  //  });
   
-      window.localStorage.removeItem(c);
- 
+  //     window.localStorage.removeItem(c);
+  //     document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
 // alert(window.localStorage.getItem(del[0]));
     } else {
       swal("Your task is safe and still pending!");
@@ -297,7 +325,8 @@ if(keys.length>0){
        
                 task.value = '';
                 ++pending_tasks;
-                document.querySelector('span').innerHTML=pending_tasks;
+   document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
+                document.querySelector('span').innerHTML=localStorage.length;
             }
            
 console.log(saved_data);

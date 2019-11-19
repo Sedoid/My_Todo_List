@@ -50,7 +50,6 @@ padding-left: 2vw;
  color: white;
 }
 
-
 .parent{
     display: flex;
     flex-direction: column;
@@ -164,7 +163,7 @@ padding-left: 2vw;
 
 @media screen and (max-width: 900px){
     body{
-        background-color:white;
+        background-color:#eee;
         overflow:hidden;
         width: 100vw;
         max-height: 100vh;
@@ -241,7 +240,7 @@ input[type='files']{
 }
 
 .part_1{
-    background-color:white;
+    background-color:#eee;
 }
 
 .part_2{
