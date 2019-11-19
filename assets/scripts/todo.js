@@ -214,33 +214,37 @@ function formatDate(date,time,pending_tasks){
           console.log(temp)
       let item = localStorage.getItem(temp)
           item= JSON.parse(item);
-          item.deleted = -1;
+          item.deleted =  item.deleted -1;
           localStorage.setItem(temp,JSON.stringify(item));
-      console.log(localStorage.getItem(temp))
+      console.log(event.target.parentNode)
     
       _deleted.appendChild(event.target.parentNode.parentNode)
       
   //  alert('about to remove child');
-  //   console.log(footer.parentNode);
-  //   let _node =footer.parentNode;
-  //   console.log(_node); 
+      if(item.deleted < -1)
+      {
+    console.log(footer.parentNode);
+    let _node =footer.parentNode;
+    console.log(_node); 
 
-  //   let keys = Object.keys(localStorage);
-  //   let del = _node.className;
-  //     // alert(del);
+    let keys = Object.keys(localStorage);
+    let del = _node.className;
+      // alert(del);
    
-  //   let c =del[0];
-  //   _node.parentNode.removeChild(_node);
+    let c =del[0];
+    _node.parentNode.removeChild(_node);
 
-  //  keys.forEach(index =>{
-  //     if(index == del[0]){
-  //       //  alert('about to remove'+ del[0]);
-  //       window.localStorage.removeItem(index);
-  //     }
-  //  });
+   keys.forEach(index =>{
+      if(index == del[0]){
+        //  alert('about to remove'+ del[0]);
+        window.localStorage.removeItem(index);
+      }
+   });
   
-  //     window.localStorage.removeItem(c);
-  //     document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
+      window.localStorage.removeItem(c);
+      document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
+      }
+
 // alert(window.localStorage.getItem(del[0]));
     } else {
       swal("Your task is safe and still pending!");
