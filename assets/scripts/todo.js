@@ -129,7 +129,7 @@ function formatDate(date,time,pending_tasks){
       var container = document.createElement("div");
       container.className = `${pending_tasks} child `;
       container.style.border= `2px solid ${colors[x]}`;
-      parent.appendChild(container);
+      parent.insertBefore(container,parent.childNodes[4]);
     
     //Creating the header for event container
     var header = document.createElement("div");
