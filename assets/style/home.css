@@ -244,11 +244,11 @@ input[type='files']{
 }
 
 .part_2{
-   background-color: orange; 
+   /* background-color: orange;  */
 }
 
 .part_3{
-  background-color:green;  
+  /* background-color:green;   */
 }
 #container{
     
