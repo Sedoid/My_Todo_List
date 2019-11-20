@@ -118,25 +118,44 @@ function formatDate(date,time,pending_tasks){
     var _date = document.querySelector('.datepicker');
     var parent = document.getElementsByClassName('parent')[0],
         completed = document.getElementsByClassName('parent')[1],
-        _deleted = document.getElementsByClassName('parent')[2];
-    var _empty = document.querySelector('p');
+        _deleted = document.getElementsByClassName('parent')[2],
+        _empty = document.querySelector('p');
  document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
 
 
 
    function taskComponent(task,x,pending_tasks,date,time){
-
+      let checkCompleted,checkDeleted;
      if(typeof(task)!= 'string'){
-       let checkDeleted = task.deleted,
-          checkCompleted = task.completed;
+   
+        checkDeleted = task.deleted,
+          checkCompleted = task.done;
+          console.log("Deleted:" + checkDeleted + " Completed: "+ checkCompleted)
       task = task.task
      }
+     // Distributing the task to their various sections of the page
       
       var container = document.createElement("div");
       container.className = `${pending_tasks} child `;
       container.style.border= `2px solid ${colors[x]}`;
-      parent.insertBefore(container,parent.childNodes[4]);
-    
+
+      if( checkCompleted == 1 )
+        {
+          document.getElementsByClassName('ibadge')[1].innerHTML += 1;
+          completed.appendChild(container);
+        } 
+      
+      else if( checkDeleted == -1 )
+        {
+          document.getElementsByClassName('ibadge')[2].innerHTML += 1;
+          _deleted.appendChild(container);
+        } 
+      else
+        { 
+          parent.insertBefore(container,parent.childNodes[4]);
+        }
+
+
     //Creating the header for event container
     var header = document.createElement("div");
     //header.innerHTML= "Time Left: " + _time.value + " <div class='root'> </div>" + _date.value;
