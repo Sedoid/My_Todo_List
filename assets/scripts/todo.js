@@ -126,6 +126,12 @@ function formatDate(date,time,pending_tasks){
 
    function taskComponent(task,x,pending_tasks,date,time){
 
+     if(typeof(task)!= 'string'){
+       let checkDeleted = task.deleted,
+          checkCompleted = task.completed;
+      task = task.task
+     }
+      
       var container = document.createElement("div");
       container.className = `${pending_tasks} child `;
       container.style.border= `2px solid ${colors[x]}`;
@@ -270,14 +276,9 @@ _empty.style.display = 'none';
       keys.forEach( index =>{
         // alert(index);
          let user = JSON.parse(window.localStorage.getItem(index));
-  taskComponent(user.task,index,index,user.deadline,user.deadline,user.time);
+  taskComponent(user,index,index,user.deadline,user.deadline,user.time);
   formatDate(user.deadline,user.time,index);
       });
-
-
- 
- 
- 
 
 
 
@@ -315,7 +316,7 @@ if(keys.length>0){
         }
         else{
    _empty.style.display = 'none';
-           
+ 
   taskComponent(task.value,x,pending_tasks,_date.value,_time.value);
   formatDate(_date.value,_time.value,pending_tasks);
  // Save the data in the localStorage 
@@ -331,8 +332,7 @@ if(keys.length>0){
                 ++pending_tasks;
    document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
                 document.querySelector('span').innerHTML=localStorage.length;
-            }
-           
+            }           
 console.log(saved_data);
       
      };
