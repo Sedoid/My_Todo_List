@@ -24,8 +24,8 @@ var audio = document.querySelector('audio');
 let x = 0;
 let pending_tasks = 0;
 let Ongoing_tasks = 0;
-let colors =['#227093','#474787','#3498db','#8e44ad','#2c3e50','#40407a','#006266','#cc8e35','#192a56','#b33939','#e1b12c'];
-// alert(Math.floor(Math.random()*18)); '#6D214F','#58B19F','#7f8c8d','#0652DD','#ED4C67','#2c2c54',
+let colors =['#ED4C67','#2c2c54','#227093','#006266','#cc8e35','#192a56','#b33939','#e1b12c'];
+// alert(Math.floor(Math.random()*18)); '#6D214F','#58B19F','#7f8c8d','#0652DD','#474787','#3498db','#8e44ad','#2c3e50','#40407a',
 
   var saved_data ={
     done:0,
@@ -120,7 +120,6 @@ function formatDate(date,time,pending_tasks){
         completed = document.getElementsByClassName('parent')[1],
         _deleted = document.getElementsByClassName('parent')[2],
         _empty = document.querySelector('p');
- document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
 
 
 
@@ -129,8 +128,8 @@ function formatDate(date,time,pending_tasks){
      if(typeof(task)!= 'string'){
    
         checkDeleted = task.deleted,
-          checkCompleted = task.done;
-          console.log("Deleted:" + checkDeleted + " Completed: "+ checkCompleted)
+        checkCompleted = task.done;
+        console.log("Deleted:" + checkDeleted + " Completed: "+ checkCompleted)
       task = task.task
      }
      // Distributing the task to their various sections of the page
@@ -152,6 +151,7 @@ function formatDate(date,time,pending_tasks){
         } 
       else
         { 
+          document.getElementsByClassName('ibadge')[0].innerHTML += 1;
           parent.insertBefore(container,parent.childNodes[4]);
         }
 
@@ -267,7 +267,7 @@ function formatDate(date,time,pending_tasks){
    });
   
       window.localStorage.removeItem(c);
-      document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
+  
       }
 
 // alert(window.localStorage.getItem(del[0]));
@@ -349,7 +349,6 @@ if(keys.length>0){
        
                 task.value = '';
                 ++pending_tasks;
-   document.getElementsByClassName('ibadge')[0].innerHTML = localStorage.length;
                 document.querySelector('span').innerHTML=localStorage.length;
             }           
 console.log(saved_data);
