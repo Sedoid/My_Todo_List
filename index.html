@@ -23,7 +23,7 @@
          <header class="z-depth-3">
                    
             <div class="top">
-                 <h1> REMINDER </h1>                  
+                 <h1> REMINDER </h1>     <audio> </audio>             
             </div>
         
         
@@ -113,11 +113,11 @@
              <span class="label"> Choose your reminder</span>
          <div class="file-field input-field">
                       <div class="btn">
-                        <span>File</span>
-                        <input type="file">
+                        <span id="ringTone">Alert Tone</span>
+                        <input type="file" accept="audio/*" capture/>
                       </div>
                       <div class="file-path-wrapper">
-                        <input class="file-path validate" type="text">
+                        <input  class="file-path validate" type="text" placeholder="Default" disabled>
                       </div>
                     </div>
                

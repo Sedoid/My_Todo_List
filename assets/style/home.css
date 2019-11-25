@@ -445,8 +445,8 @@ i.icon_purple{
     color: rgb(136, 90, 136);
 }
 
-input[type='files']{
-    display: 'none';
+ input[type='file']{ 
+    /* display: 'none'; */
 }
 
 

@@ -13,12 +13,12 @@ localStorage.clear()
   }
 
 // Handle the RingTone ability
-  // const ringtone = document.querySelector('#ringtone');
-  // ringtone.addEventListener('click',function(){
-  //     let file_holder = document.querySelector("input[type='file']");
-  //     file_holder.click();
-  //   file_holder.addEventListener('change',setTone);
-  // });
+  const ringtone = document.querySelector('#ringTone');
+  ringtone.addEventListener('click',function(){
+      let file_holder = document.querySelector("input[type='file']");
+      file_holder.click();
+    file_holder.addEventListener('change',setTone);
+  });
 
 // window.localStorage.removeItem(1);
 let x = 0;
@@ -90,8 +90,8 @@ console.log('Into the format date function:'+time + date);
   let modulation = time.split('');
   modulation.pop();
   let letter = modulation.pop()
-
-  if( letter == 'P')
+  let twelve = modulation.splice(0,2).join('');
+  if( letter == 'P' && twelve != '12')
       {
         console.log('pm mode');
       modulation =   modulation.join('');
