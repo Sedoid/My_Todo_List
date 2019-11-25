@@ -24,8 +24,8 @@ localStorage.clear()
 let x = 0;
 let pending_tasks = 0;
 let Ongoing_tasks = 0;
-let colors =['#ED4C67','#2c2c54','#227093','#006266','#cc8e35','#192a56','#b33939','#e1b12c'];
-// alert(Math.floor(Math.random()*18)); '#6D214F','#58B19F','#7f8c8d','#0652DD','#474787','#3498db','#8e44ad','#2c3e50','#40407a',
+let colors =['#ED4C67','#2c2c54','#227093','#006266','#cc8e35','#192a56','#b33939','#e1b12c','#6D214F','#58B19F','#7f8c8d','#0652DD','#474787','#3498db','#8e44ad','#2c3e50','#40407a'];
+// alert(Math.floor(Math.random()*18)); ,
 
   var saved_data ={
     done:0,
