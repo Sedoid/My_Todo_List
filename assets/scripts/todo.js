@@ -1,6 +1,6 @@
 var audio = document.querySelector('audio');
   // Registering the Service Workers
-localStorage.clear()
+// localStorage.clear()
   //
 
   function setTone(){
@@ -288,7 +288,6 @@ console.log('Into the format date function:'+time + date);
     }
 
    
-      
     task.value = "";
     _date.value="";
 
@@ -359,8 +358,26 @@ console.log(saved_data);
       
      };
 
+     //  Handling Push Notifications
+
+     if(Notification.permission === 'granted'){
+       showNotification();
+     }
+     if(Notification.permission !== 'denied'){
+       Notification.requestPermission()
+        .then (permission =>{
+          if(permission == 'granted')
+            { showNotification()}
+        })
+     }
 
 
+function showNotification(){ 
+  let notify = new Notification('Hello', 
+  {body: 'This is a push Notification',
+  renotify: true,
+  requireInteraction: true,});
+}
 //}
 
 
