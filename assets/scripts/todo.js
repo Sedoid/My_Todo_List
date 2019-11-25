@@ -89,8 +89,9 @@ console.log('Into the format date function:'+time + date);
  
   let modulation = time.split('');
   modulation.pop();
-  let letter = modulation.pop()
-  let twelve = modulation.splice(0,2).join('');
+  let letter = modulation.pop();
+  let test = [modulation[0],modulation[1]]
+  let twelve = test.join('');
   if( letter == 'P' && twelve != '12')
       {
         console.log('pm mode');
