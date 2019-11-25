@@ -1,6 +1,6 @@
 var audio = document.querySelector('audio');
   // Registering the Service Workers
-
+localStorage.clear()
   //
 
   function setTone(){
@@ -85,13 +85,15 @@ if(days==0 && hours ==0 && minutes <= 5){
 
 
 function formatDate(date,time,pending_tasks){
-
+console.log('Into the format date function:'+time + date);
+ 
   let modulation = time.split('');
   modulation.pop();
   let letter = modulation.pop()
 
   if( letter == 'P')
       {
+        console.log('pm mode');
       modulation =   modulation.join('');
        let temp =  modulation.split(':')
        temp[0] = parseInt(temp[0]) + 12;
@@ -99,12 +101,15 @@ function formatDate(date,time,pending_tasks){
       // temp.push(':00');
        time = temp.join('')
       
-      //  alert(time)
+     console.log(time)
       }
-
-  let end = `${date}`;
-   // console.log(time)
+ 
+  let end = `${date} ${time}`;
+ console.log('End' + end);
+  
     var _deadline = new Date(end).getTime();  
+
+
     setTimer(_deadline,pending_tasks);
     return end;
 }
@@ -319,11 +324,9 @@ if(keys.length>0){
 
     btn.onclick = function(){
 
-
         let color = Math.floor(Math.random()*colors.length);
-        console.log(x);
-
-        if(task.value =="" ||_time.value =="" || _date.value =="" ){
+   
+        if(task.value =='' ||_time.value =="" || _date.value =="" ){
             // alert('Enter a task');
             swal({
                 title: "All information are required",
