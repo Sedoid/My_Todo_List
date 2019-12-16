@@ -12,6 +12,25 @@ hr{
     margin-bottom: 3px;
 }
 
+.image{
+    position: relative;
+    height: 150px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+   
+}
+.image::before{
+    content: '';
+    position: absolute;
+    top:-1px;
+    left: -1px;
+    right: -1px;
+    bottom: -1px;
+    background-color: rgba(183, 128, 211, 0.1);
+}
+
+
 input[type='file']{
     display: none;
 }
@@ -106,7 +125,8 @@ padding-left: 2vw;
 }
 
 .root{
-    
+    background-color: #aaa;
+    color:black;
     display: flex;
     flex-direction: row;
     justify-content: flex-end;
@@ -115,7 +135,6 @@ padding-left: 2vw;
 
 .root > div{
     
-    color:white;
     border:1px solid white;
     display: inline-block;
     border-radius: 2%;
@@ -281,6 +300,7 @@ input[type='files']{
    display: flex;
    flex-direction: row;
    justify-content: space-between;
+   background-color: #aaa;
 }
 
 .foot button{

@@ -24,7 +24,8 @@ var audio = document.querySelector('audio');
 let x = 0;
 let pending_tasks = 0;
 let Ongoing_tasks = 0;
-let colors =['#ED4C67','#2c2c54','#227093','#006266','#cc8e35','#192a56','#b33939','#e1b12c','#6D214F','#58B19F','#7f8c8d','#0652DD','#474787','#3498db','#8e44ad','#2c3e50','#40407a'];
+
+ let colors =['./assets/motivational_pics/create-your-dreamweb3.jpg','./assets/motivational_pics/stopwish.png','./assets/motivational_pics/how-to-motivate-about-success-through-sports-motivational-quotes-3108.jpg','./assets/motivational_pics/Time-for-Change.jpg','./assets/motivational_pics/quote1.jpeg','./assets/motivational_pics/quote2.jpeg','./assets/motivational_pics/quote19.png'];
 // alert(Math.floor(Math.random()*18)); ,
 
   var saved_data ={
@@ -142,7 +143,7 @@ console.log('Into the format date function:'+time + date);
       
       var container = document.createElement("div");
       container.className = `${pending_tasks} child `;
-      container.style.border= `2px solid ${colors[x]}`;
+      // container.style.border= `2px solid ${colors[x]}`;
 
       if( checkCompleted == 1 )
         {
@@ -165,8 +166,9 @@ console.log('Into the format date function:'+time + date);
     //Creating the header for event container
     var header = document.createElement("div");
     //header.innerHTML= "Time Left: " + _time.value + " <div class='root'> </div>" + _date.value;
-    header.style.backgroundColor = colors[x];
-    header.className = `root root${pending_tasks}`;
+    //  header.style.backgroundColor = 'red';
+    header.className = `image`;
+    header.style.backgroundImage =  `url('${colors[pending_tasks]}')`
     console.log(header.innerHTML);
     container.appendChild(header);
     // /////////////////////////////////////////////////
@@ -177,10 +179,10 @@ console.log('Into the format date function:'+time + date);
     
     //Creating a  footer for the container  
     var footer = document.createElement('div');
-    footer.innerHTML= "<span> DeadLine: &nbsp " +formatDate(date,time)+ "</span> ";
-    footer.style.backgroundColor = colors[x];
-    footer.style.color = "white";
-    footer.className = "foot"
+    footer.innerHTML= "";
+    // footer.style.backgroundColor = colors[x];
+    // footer.style.color = "white";
+    footer.className = `root root${pending_tasks}`
     container.appendChild(footer);
 
     //Containing the delete and Complete
@@ -190,7 +192,7 @@ console.log('Into the format date function:'+time + date);
     _taskCompleted.innerHTML= 'Completed';
    _taskCompleted.style.height = 50;
     _taskCompleted.className = `completed completed${pending_tasks}`;
-    footer.appendChild(_taskCompleted);
+    // footer.appendChild(_taskCompleted);
     
     _taskCompleted.onclick=function(){
       saved_data.done = 1;
@@ -220,7 +222,7 @@ console.log('Into the format date function:'+time + date);
 
     _taskdeleted.className = `deleted deleted${pending_tasks}`;
     _taskdeleted.style.borderRadius="1px solid white";
-    footer.appendChild(_taskdeleted);
+    // footer.appendChild(_taskdeleted);
     
     
     
@@ -324,7 +326,7 @@ if(keys.length>0){
 
     btn.onclick = function(){
 
-        let color = Math.floor(Math.random()*colors.length);
+        // let color = Math.floor(Math.random()*colors.length);
    
         if(task.value =='' ||_time.value =="" || _date.value =="" ){
             // alert('Enter a task');
