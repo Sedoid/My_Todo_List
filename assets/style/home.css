@@ -14,7 +14,7 @@ hr{
 
 .image{
     position: relative;
-    height: 150px;
+    height: 170px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -27,7 +27,8 @@ hr{
     left: -1px;
     right: -1px;
     bottom: -1px;
-    background-color: rgba(183, 128, 211, 0.1);
+    /* background-color: rgba(183, 128, 211, 0.2); */
+    background-color: rgba(0,0,0,0.2)
 }
 
 
@@ -36,7 +37,7 @@ input[type='file']{
 }
 
 body{
-    background-color: #eee;
+    background-color: white;
     width:100vw !important;
     overflow:hidden;
 }
@@ -97,7 +98,8 @@ padding-left: 2vw;
     width: 95% !important;
     border-radius: 2px;
     display: inline-block;
-    border: 2px solid #ccc;
+    
+    border: 1px solid rgb(168, 31, 106);
     text-align: left;
     margin-bottom: 20px;
     padding-bottom: 0;
@@ -123,29 +125,35 @@ padding-left: 2vw;
 .foot button{
     align-items: right;
 }
-
+.task{
+     border:0px;
+     color: white;
+     background-color:rgb(168, 31, 106);
+}
 .root{
-    background-color: #aaa;
-    color:black;
+    margin-top: -2px;
+    background-color: rgb(168, 31, 106);
+    color:white;
+    font-size:0.7em;
     display: flex;
     flex-direction: row;
-    justify-content: flex-end;
+    justify-content: flex-start;
     align-content: center ;   
 }
 
 .root > div{
     
-    border:1px solid white;
+    /* border:1px solid white; */
     display: inline-block;
-    border-radius: 2%;
-    padding: 3px !important;
-    margin-left: 3px;
+    /* border-radius: 2%; */
+    /* padding: 3px !important; */
+    /* margin-left: 3px; */
     width: 4em !important;
 }
 
 .root > div:first-child{
     border:0;
-    width: 6em !important;
+    /* width: 6em !important; */
 }
 
 .child>div{
@@ -182,7 +190,7 @@ padding-left: 2vw;
 
 @media screen and (max-width: 900px){
     body{
-        background-color:#eee;
+        background-color:white;
         overflow:hidden;
         width: 100vw;
         max-height: 100vh;
@@ -259,7 +267,7 @@ input[type='files']{
 }
 
 .part_1{
-    background-color:#eee;
+    background-color:white;
 }
 
 .part_2{

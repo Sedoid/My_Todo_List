@@ -25,7 +25,7 @@ let x = 0;
 let pending_tasks = 0;
 let Ongoing_tasks = 0;
 
- let colors =['./assets/motivational_pics/create-your-dreamweb3.jpg','./assets/motivational_pics/stopwish.png','./assets/motivational_pics/how-to-motivate-about-success-through-sports-motivational-quotes-3108.jpg','./assets/motivational_pics/Time-for-Change.jpg','./assets/motivational_pics/quote1.jpeg','./assets/motivational_pics/quote2.jpeg','./assets/motivational_pics/quote19.png'];
+ let colors =['./assets/images/positive.jpg','./assets/pics/dope.jpg','./assets/pics/use.jpg','./assets/pics/work.jpg','./assets/pics/dope.jpg','./assets/motivational_pics/quote2.jpeg','./assets/motivational_pics/quote19.png'];
 // alert(Math.floor(Math.random()*18)); ,
 
   var saved_data ={
@@ -69,7 +69,7 @@ var seconds = Math.floor((t%(1000*60)) / 1000);
 
 let root = document.querySelector(`.root${site}`);
 
- root.innerHTML = '<div> Time Left :  </div>'+
+ root.innerHTML = 
  ((days>0)? '<div>  ' + days     +  'Days </div>  ':'' )
 +((hours>0)? '<div>  '+ hours    + 'Hrs </div>  ':'' )
 + ((minutes>0)?'<div>  '+ minutes  + ' Min </div>  ':'')
@@ -174,7 +174,7 @@ console.log('Into the format date function:'+time + date);
     // /////////////////////////////////////////////////
     let event = document.createElement('div');
     event.className="task"
-    event.innerHTML=task;
+    event.innerHTML= `ToDo:<br />  ${task} `;
     container.appendChild(event);
     
     //Creating a  footer for the container  
