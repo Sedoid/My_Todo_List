@@ -2,15 +2,34 @@ var audio = document.querySelector('audio');
   // Registering the Service Workers
 // localStorage.clear()
   //
-
+var run;
   function setTone(){
  //   var audio = document.querySelector('audio');
-    let file_holder = document.querySelector("input[type='file']");
-    console.log(file_holder.files[0].name);
-    let audiosrc = URL.createObjectURL(file_holder.files[0]); 
-    audio.src = audiosrc;  
-    audio.autoplay = false;
-  }
+ alert('creating indexedDB')
+    // if(navigator){
+      let db = indexedDB.open('ringtone',1);
+      db.addEventListener('upgradeneeded',event =>{
+        let db = event.target.result;
+        db.createObjectStore('music');
+      })
+      db.addEventListener('success',event =>{
+        console.log('success')
+        let db = event.target.result;
+        let store = db.transaction('music','readwrite');
+        let store_parker = store.objectStore('music');
+        let file_holder = document.querySelector("input[type='file']");
+        console.log(file_holder.files[0].name);
+        let audiosrc = URL.createObjectURL(file_holder.files[0]); 
+        audio.src = audiosrc;  
+        audio.autoplay = false;
+        store_parker.put(file_holder.files[0],0);
+      })
+      db.addEventListener('error',(event)=>{
+        console.log('An error occured in creating the database');
+      })
+    }
+    
+  // }
 
 // Handle the RingTone ability
   const ringtone = document.querySelector('#ringTone');
@@ -25,7 +44,52 @@ let x = 0;
 let pending_tasks = 0;
 let Ongoing_tasks = 0;
 
- let colors =['./assets/images/positive.jpg','./assets/pics/dope.jpg','./assets/pics/use.jpg','./assets/pics/work.jpg','./assets/pics/dope.jpg','./assets/motivational_pics/quote2.jpeg','./assets/motivational_pics/quote19.png'];
+ let colors =[
+   './assets/pics/quote19-1.png',
+   './assets/pics/dope0.jpeg',
+   './assets/pics/dope.jpg',
+   './assets/pics/use.jpg',
+   './assets/pics/141112_goals.jpg',
+   './assets/pics/original.jpg',
+   './assets/pics/632227.jpg',
+   './assets/pics/632659.jpg',
+   './assets/pics/632812.jpg',
+   './assets/pics/633170.jpg',
+   './assets/pics/633409.jpg',
+   './assets/pics/35855507-motivational-wallpapers-hd.jpg',
+   './assets/pics/change (1).jpg',
+   './assets/pics/create-your-dreamweb3.jpg',
+   './assets/pics/Dream.jpg',
+   './assets/pics/how-to-motivate-about-success-through-sports-motivational-quotes-3108.jpg',
+   './assets/pics/If-it-is-important-to-you-you-will-find-a-way.-If-not-you-will-find-excuses.-Daniel-Decker.jpg',
+   './assets/pics/just-do-it.jpg',
+   './assets/pics/Motivational-Quotes.jpg',
+   './assets/pics/photo-1468971050039-be99497410af.jpeg',
+   './assets/pics/photo-1522120691812-dcdfb625f397.jpeg',
+   './assets/pics/quote0.jpeg',
+   './assets/pics/quote2.jpeg',
+   './assets/pics/quote6.jpg',
+   './assets/pics/quote7.jpg',
+   './assets/pics/quote8.jpg',
+   './assets/pics/quote11.jpeg',
+   './assets/pics/quote12.jpg',
+   './assets/pics/quote13.jpg',
+   './assets/pics/quote14.jpg',
+   './assets/pics/quote14.png',
+   './assets/pics/quote15.jpg',
+   './assets/pics/quote19.png',
+   './assets/pics/quotes.jpg',
+   './assets/pics/quotes.jpg',
+   './assets/pics/quotr22.jpeg',
+   './assets/pics/Screen-Shot-2017-08-14-at-5.19.33-PM-1.png',
+   './assets/pics/stopwish.png',
+   './assets/pics/Time-for-Change.jpg',
+   './assets/pics/',
+   './assets/pics/',
+
+
+
+  ];
 // alert(Math.floor(Math.random()*18)); ,
 
   var saved_data ={
@@ -36,13 +100,13 @@ let Ongoing_tasks = 0;
 
 function setTimer (time_up,site){
 
-  setInterval(
+   run = setInterval(
     function(){
       var now = new Date().getTime(); 
       var t = time_up-now;
    if(t <= 0){
     
-     clearInterval(this);
+     clearInterval(run);
      document.querySelector(`.root${site}`).innerHTML =
       '<span style="color: red"> EXPIRED</span>';
     //audio.play();
@@ -73,10 +137,24 @@ let root = document.querySelector(`.root${site}`);
  ((days>0)? '<div>  ' + days     +  'Days </div>  ':'' )
 +((hours>0)? '<div>  '+ hours    + 'Hrs </div>  ':'' )
 + ((minutes>0)?'<div>  '+ minutes  + ' Min </div>  ':'')
-+ '<div>  '+ seconds  + 'sec </div>  ';
++ '<div>  '+ seconds  + '  sec</div><div>Left </div>  ';
 
 if(days==0 && hours ==0 && minutes <= 5){
-  audio.play();
+  let db = indexedDB.open('ringtone',1);
+
+  db.addEventListener('error',event =>{
+    alert('No Ringtone Set');
+  })
+  db.addEventListener('success', event =>{
+    let db = event.target.result;
+    let tx = db.transaction('music','readwrite');
+    let store = tx.objectStore('music');
+    let song = store.get(1);
+    song.addEventListener('success' ,event => {
+      let data = event.target.result;
+      console.log(event.target);
+    })
+  })
 }
 
  }
@@ -147,18 +225,18 @@ console.log('Into the format date function:'+time + date);
 
       if( checkCompleted == 1 )
         {
-          document.getElementsByClassName('ibadge')[1].innerHTML += 1;
+          document.getElementsByClassName('ibadge')[1].innerHTML = document.getElementsByClassName('ibadge')[1].innerHTML.length+ 1;
           completed.appendChild(container);
         } 
       
       else if( checkDeleted == -1 )
         {
-          document.getElementsByClassName('ibadge')[2].innerHTML += 1;
+          document.getElementsByClassName('ibadge')[2].innerHTML = document.getElementsByClassName('ibadge')[2].innerHTML.length +  1;
           _deleted.appendChild(container);
         } 
       else
         { 
-          document.getElementsByClassName('ibadge')[0].innerHTML += 1;
+          document.getElementsByClassName('ibadge')[0].innerHTML = document.getElementsByClassName('ibadge')[0].innerHTML + 1;
           parent.insertBefore(container,parent.childNodes[4]);
         }
 
@@ -174,7 +252,7 @@ console.log('Into the format date function:'+time + date);
     // /////////////////////////////////////////////////
     let event = document.createElement('div');
     event.className="task"
-    event.innerHTML= `ToDo:<br />  ${task} `;
+    event.innerHTML= `📝:<br />-\> ${task} `;
     container.appendChild(event);
     
     //Creating a  footer for the container  
@@ -189,10 +267,14 @@ console.log('Into the format date function:'+time + date);
     
     //creating the Task Completed and Delete Task button
     let _taskCompleted = document.createElement('button');
-    _taskCompleted.innerHTML= 'Completed';
-   _taskCompleted.style.height = 50;
+    _taskCompleted.innerHTML= '<img src="./assets/pics/tik.png" />';
+  //     _taskCompleted.style.width = 100;
+  //  _taskCompleted.style.height = 50;
     _taskCompleted.className = `completed completed${pending_tasks}`;
-    // footer.appendChild(_taskCompleted);
+    
+    if(!checkCompleted)
+    header.appendChild(_taskCompleted);
+   
     
     _taskCompleted.onclick=function(){
       saved_data.done = 1;
@@ -210,24 +292,26 @@ console.log('Into the format date function:'+time + date);
       completed.appendChild(this.parentNode.parentNode)
 
       swal("Good job!", `You deleted ${pending_tasks}  ${pending_tasks>1?'tasks': 'task'} Today!`, "success");             
-      this.innerHTML = " DONE ";
+      this.innerHTML = " ";
 
       this.parentNode.removeChild(`${deleted.parentNode}`);
     }
-    
+    clearInterval(run);
+
     //Creating the Task Deleted button
     let _taskdeleted = document.createElement('button');
-    _taskdeleted.innerHTML= 'Delete';
+    _taskdeleted.innerHTML= '<img src="./assets/pics/cross0.png" />';//❌
  
 
     _taskdeleted.className = `deleted deleted${pending_tasks}`;
     _taskdeleted.style.borderRadius="1px solid white";
-    // footer.appendChild(_taskdeleted);
+    header.appendChild(_taskdeleted);
     
     
     
     // Deleting a Tasks is done here
     _taskdeleted.onclick=(event) => {
+
     swal({
     title: "Are you sure?",
     text: "Once deleted, you will not see this task again!",
@@ -241,8 +325,9 @@ console.log('Into the format date function:'+time + date);
         icon: "success",
       });
 
-  //alert(event.target)
-      let temp = event.target.parentNode.parentNode.classList.value;
+  console.log(event.target)
+      let temp = event.target.parentNode.parentNode.parentNode.classList.value;
+      console.log(event.target)
           temp = parseInt(temp)
           console.log(temp)
       let item = localStorage.getItem(temp)
@@ -251,11 +336,12 @@ console.log('Into the format date function:'+time + date);
           localStorage.setItem(temp,JSON.stringify(item));
       console.log(event.target.parentNode)
     
-      _deleted.appendChild(event.target.parentNode.parentNode)
+      _deleted.appendChild(event.target.parentNode.parentNode.parentNode)
       
   //  alert('about to remove child');
       if(item.deleted < -1)
       {
+        clearInterval(run)
     console.log(footer.parentNode);
     let _node =footer.parentNode;
     console.log(_node); 
@@ -381,5 +467,3 @@ function showNotification(){
   requireInteraction: true,});
 }
 //}
-
-

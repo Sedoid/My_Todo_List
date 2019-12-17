@@ -13,8 +13,11 @@ hr{
 }
 
 .image{
+    display: flex;
+    flex-direction: space-between;
     position: relative;
     height: 170px;
+    
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -22,13 +25,14 @@ hr{
 }
 .image::before{
     content: '';
+    display: flex;
     position: absolute;
     top:-1px;
     left: -1px;
     right: -1px;
     bottom: -1px;
     /* background-color: rgba(183, 128, 211, 0.2); */
-    background-color: rgba(0,0,0,0.2)
+    background-color: rgba(0,0,0,0.1)
 }
 
 
@@ -99,7 +103,7 @@ padding-left: 2vw;
     border-radius: 2px;
     display: inline-block;
     
-    border: 1px solid rgb(168, 31, 106);
+    border: 2px solid rgb(128, 16, 156);
     text-align: left;
     margin-bottom: 20px;
     padding-bottom: 0;
@@ -128,11 +132,11 @@ padding-left: 2vw;
 .task{
      border:0px;
      color: white;
-     background-color:rgb(168, 31, 106);
+     background-color:rgb(128, 16, 156);
 }
 .root{
     margin-top: -2px;
-    background-color: rgb(168, 31, 106);
+    background-color: rgb(128, 16, 156);
     color:white;
     font-size:0.7em;
     display: flex;
@@ -160,30 +164,6 @@ padding-left: 2vw;
     padding:8px;  
     width: 100% !important;
 }
-
-.completed{
-    border-radius: 5px;
-    background-color: #2ecc71;
-    color: white; 
-    border: 1px solid white;
- 
-}
-
-.completed:hover{
-      transition-duration: 1s;
-    font-size: 10px;
-   background-color: #218d4e;
-   
-}
-.deleted{
-    width: 9em;
-    margin-left:2em;
-    color:white;
-    border: 1px solid white;
-    border-radius: 5px;
-    background-color: #c0392b;
-}
-
 
 
 
@@ -285,6 +265,7 @@ input[type='files']{
 
    
     .child{
+        position: relative;
         width: 95%;
     }
 
@@ -311,8 +292,8 @@ input[type='files']{
    background-color: #aaa;
 }
 
-.foot button{
-   padding: 0 5px;
+ button{
+   z-index: 2;
 }
 
 
@@ -323,27 +304,44 @@ input[type='files']{
    
     
     .completed{
-        height: 50px !important;
-        border-radius: 5px;
-        background-color: #2ecc71;
-        color: white; 
-        border: 1px solid white;
-     
+        background-color: rgba(0,0,0,0.4);
+        border:2px solid rgb(128, 16, 156);
+        border-radius: 50%;
+        width:27px;
+        height:28px;
+       
+        /* position: absolute; */
+        /* left:5px; */
+        top: 0;
+    }
+
+    .completed img, .deleted img{
+        /* z-index:3; */
+        width: 28px;
+        height: 26px;
+        position: relative;
+        top:-4px;
+        left:-3px;
+    }
+    .deleted img{
+         width: 26px;
+        height: 25px;
     }
     
-    .completed:hover{
-          transition-duration: 1s;
-        font-size: 10px;
-       background-color: #218d4e;
-       
-    }
+  
     .deleted{
-        width: 9em;
-        margin-left:2em;
-        color:white;
+        /* background-color: rgba(0,0,0,0.4);
+        border:2px solid rgb(192, 5, 192);
+        border-radius: 50%;
+        width:27px;
+        height:26px; */
+      position: absolute;
+      right:6px;
+      top:9px;
+        /* color:white;
         border: 1px solid white;
         border-radius: 5px;
-        background-color: #c0392b;
+        background-color: #c0392b; */
     }
 
  
