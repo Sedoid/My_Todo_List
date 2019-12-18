@@ -252,7 +252,7 @@ console.log('Into the format date function:'+time + date);
     // /////////////////////////////////////////////////
     let event = document.createElement('div');
     event.className="task"
-    event.innerHTML= `📝:<br />-\> ${task} `;
+    event.innerHTML= `Task:<br /> ${task} `;
     container.appendChild(event);
     
     //Creating a  footer for the container  
