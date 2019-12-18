@@ -18,10 +18,6 @@ var run;
         let store = db.transaction('music','readwrite');
         let store_parker = store.objectStore('music');
         let file_holder = document.querySelector("input[type='file']");
-        console.log(file_holder.files[0].name);
-        let audiosrc = URL.createObjectURL(file_holder.files[0]); 
-        audio.src = audiosrc;  
-        audio.autoplay = false;
         store_parker.put(file_holder.files[0],0);
       })
       db.addEventListener('error',(event)=>{
@@ -139,7 +135,7 @@ let root = document.querySelector(`.root${site}`);
 + ((minutes>0)?'<div>  '+ minutes  + ' Min </div>  ':'')
 + '<div>  '+ seconds  + '  sec</div><div>Left </div>  ';
 
-if(days==0 && hours ==0 && minutes <= 5){
+if((days==0 && hours ==0 && minutes == 5 && secs ==0) || (days==0 && hours ==0 && minutes == 2 && secs ==0) ||(days==0 && hours ==0 && minutes == 0 && secs ==0)) {
   let db = indexedDB.open('ringtone',1);
 
   db.addEventListener('error',event =>{
@@ -149,10 +145,16 @@ if(days==0 && hours ==0 && minutes <= 5){
     let db = event.target.result;
     let tx = db.transaction('music','readwrite');
     let store = tx.objectStore('music');
-    let song = store.get(1);
+    let song = store.get(0);
     song.addEventListener('success' ,event => {
       let data = event.target.result;
-      console.log(event.target);
+      console.log(song.result);
+      let audio  = document.querySelector('audio');
+      let audiosrc = URL.createObjectURL(song.result); 
+      audio.src = audiosrc;  
+      audio.autoplay = false;
+      audio.play();
+      
     })
   })
 }
@@ -225,18 +227,18 @@ console.log('Into the format date function:'+time + date);
 
       if( checkCompleted == 1 )
         {
-          document.getElementsByClassName('ibadge')[1].innerHTML = document.getElementsByClassName('ibadge')[1].innerHTML.length+ 1;
+         // document.getElementsByClassName('ibadge')[1].innerHTML = document.getElementsByClassName('ibadge')[1].innerHTML.length+ 1;
           completed.appendChild(container);
         } 
       
       else if( checkDeleted == -1 )
         {
-          document.getElementsByClassName('ibadge')[2].innerHTML = document.getElementsByClassName('ibadge')[2].innerHTML.length +  1;
+         // document.getElementsByClassName('ibadge')[2].innerHTML = document.getElementsByClassName('ibadge')[2].innerHTML.length +  1;
           _deleted.appendChild(container);
         } 
       else
         { 
-          document.getElementsByClassName('ibadge')[0].innerHTML = document.getElementsByClassName('ibadge')[0].innerHTML + 1;
+        //  document.getElementsByClassName('ibadge')[0].innerHTML = document.getElementsByClassName('ibadge')[0].innerHTML + 1;
           parent.insertBefore(container,parent.childNodes[4]);
         }
 

@@ -342,9 +342,12 @@ input[type='files']{
         border-radius: 50%;
         width:27px;
         height:26px; */
+        border: 0px;
+        background-color: rgba(0,0,0,0);
       position: absolute;
       right:6px;
       top:9px;
+      
         /* color:white;
         border: 1px solid white;
         border-radius: 5px;
