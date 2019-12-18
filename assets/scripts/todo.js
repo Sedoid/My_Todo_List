@@ -5,7 +5,7 @@ var audio = document.querySelector('audio');
 var run;
   function setTone(){
  //   var audio = document.querySelector('audio');
- alert('creating indexedDB')
+
     // if(navigator){
       let db = indexedDB.open('ringtone',1);
       db.addEventListener('upgradeneeded',event =>{
