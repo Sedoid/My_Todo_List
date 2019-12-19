@@ -492,5 +492,6 @@ i.icon_purple{
 @media and screen(max-width: 330px){
 .add_item{
     background-image: url('');
+    background-color: red;
 }
     
