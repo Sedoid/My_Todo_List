@@ -44,6 +44,7 @@ let Ongoing_tasks = 0;
    './assets/pics/quote19-1.png',
    './assets/pics/dope0.jpeg',
    './assets/pics/dope.jpg',
+      './assets/pics/If-it-is-important-to-you-you-will-find-a-way.-If-not-you-will-find-excuses.-Daniel-Decker.jpg',
    './assets/pics/use.jpg',
    './assets/pics/141112_goals.jpg',
    './assets/pics/original.jpg',
@@ -57,7 +58,6 @@ let Ongoing_tasks = 0;
    './assets/pics/create-your-dreamweb3.jpg',
    './assets/pics/Dream.jpg',
    './assets/pics/how-to-motivate-about-success-through-sports-motivational-quotes-3108.jpg',
-   './assets/pics/If-it-is-important-to-you-you-will-find-a-way.-If-not-you-will-find-excuses.-Daniel-Decker.jpg',
    './assets/pics/just-do-it.jpg',
    './assets/pics/Motivational-Quotes.jpg',
    './assets/pics/photo-1468971050039-be99497410af.jpeg',
@@ -102,7 +102,6 @@ function setTimer (time_up,site){
       var t = time_up-now;
    if(t <= 0){
     
-     clearInterval(run);
      document.querySelector(`.root${site}`).innerHTML =
       '<span style="color: red"> EXPIRED</span>';
     //audio.play();
@@ -165,10 +164,10 @@ if((days==0 && hours ==0 && minutes == 5 && seconds ==0) || (days==0 && hours ==
 }
 
 
-function formatDate(date,time,pending_tasks){
+function formatDate(date,time,pending_tasks,done,deleted){
 console.log('Into the format date function:'+time + date);
- 
-  let modulation = time.split('');
+  if(!done && !deleted){
+   let modulation = time.split('');
   modulation.pop();
   let letter = modulation.pop();
   let test = [modulation[0],modulation[1]]
@@ -194,6 +193,8 @@ console.log('Into the format date function:'+time + date);
 
     setTimer(_deadline,pending_tasks);
     return end;
+  }
+  
 }
 
 //window.onload = function (){
@@ -281,7 +282,7 @@ console.log('Into the format date function:'+time + date);
     _taskCompleted.onclick=function(){
       saved_data.done = 1;
      // alert(saved_data.done);
-
+      console.log(event.target)
       console.log(saved_data)
       let temp = this.parentNode.parentNode.classList.value;
           temp = parseInt(temp)
@@ -292,13 +293,13 @@ console.log('Into the format date function:'+time + date);
       console.log(localStorage.getItem(temp))
      
       completed.appendChild(this.parentNode.parentNode)
-
+      console.log( 'root' + this.parentNode.parentNode.classList[0])
       swal("Good job!", `You deleted ${pending_tasks}  ${pending_tasks>1?'tasks': 'task'} Today!`, "success");             
       this.innerHTML = " ";
 
-      this.parentNode.removeChild(`${deleted.parentNode}`);
+      // this.parentNode.removeChild(`${deleted.parentNode}`);
     }
-    clearInterval(run);
+     
 
     //Creating the Task Deleted button
     let _taskdeleted = document.createElement('button');
@@ -339,11 +340,11 @@ console.log('Into the format date function:'+time + date);
       console.log(event.target.parentNode)
     
       _deleted.appendChild(event.target.parentNode.parentNode.parentNode)
-      
+       clearInterval(run)
   //  alert('about to remove child');
       if(item.deleted < -1)
       {
-        clearInterval(run)
+       
     console.log(footer.parentNode);
     let _node =footer.parentNode;
     console.log(_node); 
@@ -391,7 +392,7 @@ _empty.style.display = 'none';
         // alert(index);
          let user = JSON.parse(window.localStorage.getItem(index));
   taskComponent(user,index,index,user.deadline,user.deadline,user.time);
-  formatDate(user.deadline,user.time,index);
+  formatDate(user.deadline,user.time,index,user.done,user.deleted);
       });
 
 
@@ -414,7 +415,7 @@ if(keys.length>0){
 
     btn.onclick = function(){
 
-        // let color = Math.floor(Math.random()*colors.length);
+         let color = Math.floor(Math.random()*colors.length);
    
         if(task.value =='' ||_time.value =="" || _date.value =="" ){
             // alert('Enter a task');
@@ -430,7 +431,7 @@ if(keys.length>0){
    _empty.style.display = 'none';
  
   taskComponent(task.value,x,pending_tasks,_date.value,_time.value);
-  formatDate(_date.value,_time.value,pending_tasks);
+  formatDate(_date.value,_time.value,pending_tasks,0,0);
  // Save the data in the localStorage 
    saved_data.deadline  = _date.value ;
    saved_data.task      = task.value;
@@ -448,24 +449,7 @@ console.log(saved_data);
       
      };
 
-     //  Handling Push Notifications
-
-     if(Notification.permission === 'granted'){
-       showNotification();
-     }
-     if(Notification.permission !== 'denied'){
-       Notification.requestPermission()
-        .then (permission =>{
-          if(permission == 'granted')
-            { showNotification()}
-        })
-     }
 
 
-function showNotification(){ 
-  let notify = new Notification('Hello', 
-  {body: 'This is a push Notification',
-  renotify: true,
-  requireInteraction: true,});
-}
 //}
+
