@@ -489,9 +489,13 @@ i.icon_purple{
 
 }
 
-@media and screen(max-width: 330px){
-.add_item{
-    background-image: url('');
-    background-color: red;
+@media(max-width: 320px){
+ .add_item{
+      background-position: top 590px center;
+    }
+
+    .title{
+        font-size: 1.2em;
+    }
 }
     
