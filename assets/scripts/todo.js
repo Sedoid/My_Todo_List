@@ -136,13 +136,20 @@ let root = document.querySelector(`.root${site}`);
 
 if((days==0 && hours ==0 && minutes == 5 && seconds ==0) || (days==0 && hours ==0 && minutes == 2 && seconds ==0) ||(days==0 && hours ==0 && minutes == 0 && seconds ==0)) {
   let db = indexedDB.open('ringtone',1);
+  let audio  = document.querySelector('audio');
+  
+    
 
   db.addEventListener('error',event =>{
     alert('No Ringtone Set');
   })
   db.addEventListener('success', event =>{
     let db = event.target.result;
+    try{
     let tx = db.transaction('music','readwrite');
+    }catch{
+    audio.play();
+    }
     let store = tx.objectStore('music');
     let song = store.get(0);
     song.addEventListener('success' ,event => {
