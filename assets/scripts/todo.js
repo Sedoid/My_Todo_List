@@ -135,7 +135,7 @@ let root = document.querySelector(`.root${site}`);
 + ((minutes>0)?'<div>  '+ minutes  + ' Min </div>  ':'')
 + '<div>  '+ seconds  + '  sec</div><div>Left </div>  ';
 
-if((days==0 && hours ==0 && minutes == 5 && secs ==0) || (days==0 && hours ==0 && minutes == 2 && secs ==0) ||(days==0 && hours ==0 && minutes == 0 && secs ==0)) {
+if((days==0 && hours ==0 && minutes == 5 && seconds ==0) || (days==0 && hours ==0 && minutes == 2 && seconds ==0) ||(days==0 && hours ==0 && minutes == 0 && seconds ==0)) {
   let db = indexedDB.open('ringtone',1);
 
   db.addEventListener('error',event =>{
