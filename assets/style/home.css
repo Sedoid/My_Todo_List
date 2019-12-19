@@ -484,6 +484,13 @@ i.icon_purple{
  input[type='file']{ 
     /* display: 'none'; */
 }
+   
 
 
 }
+
+@media and screen(max-width: 330px){
+.add_item{
+    background-image: url('');
+}
+    
