@@ -147,10 +147,11 @@ if((days==0 && hours ==0 && minutes == 5 && seconds ==0) || (days==0 && hours ==
     let db = event.target.result;
     try{
     let tx = db.transaction('music','readwrite');
+    let store = tx.objectStore('music');
     }catch{
     audio.play();
     }
-    let store = tx.objectStore('music');
+    
     let song = store.get(0);
     song.addEventListener('success' ,event => {
       let data = event.target.result;
@@ -235,18 +236,18 @@ console.log('Into the format date function:'+time + date);
 
       if( checkCompleted == 1 )
         {
-         // document.getElementsByClassName('ibadge')[1].innerHTML = document.getElementsByClassName('ibadge')[1].innerHTML.length+ 1;
+         document.getElementsByClassName('ibadge')[1].innerHTML = parseInt(document.getElementsByClassName('ibadge')[1].innerHTML)+ 1;
           completed.appendChild(container);
         } 
       
       else if( checkDeleted == -1 )
         {
-         // document.getElementsByClassName('ibadge')[2].innerHTML = document.getElementsByClassName('ibadge')[2].innerHTML.length +  1;
+         document.getElementsByClassName('ibadge')[2].innerHTML = parseInt(document.getElementsByClassName('ibadge')[2].innerHTML) +  1;
           _deleted.appendChild(container);
         } 
       else
         { 
-        //  document.getElementsByClassName('ibadge')[0].innerHTML = document.getElementsByClassName('ibadge')[0].innerHTML + 1;
+         document.getElementsByClassName('ibadge')[0].innerHTML = parseInt(document.getElementsByClassName('ibadge')[0].innerHTML) + 1;
           parent.insertBefore(container,parent.childNodes[4]);
         }
 
@@ -256,7 +257,7 @@ console.log('Into the format date function:'+time + date);
     //header.innerHTML= "Time Left: " + _time.value + " <div class='root'> </div>" + _date.value;
     //  header.style.backgroundColor = 'red';
     header.className = `image`;
-    header.style.backgroundImage =  `url('${colors[pending_tasks]}')`
+    header.style.backgroundImage =  `url('${colors[pending_tasks%40]}')`
     console.log(header.innerHTML);
     container.appendChild(header);
     // /////////////////////////////////////////////////
@@ -305,6 +306,7 @@ console.log('Into the format date function:'+time + date);
       this.innerHTML = " ";
 
       // this.parentNode.removeChild(`${deleted.parentNode}`);
+      document.getElementsByClassName('ibadge')[1].innerHTML= parseInt(document.getElementsByClassName('ibadge')[1].innerHTML)  + 1;
     }
      
 
@@ -345,22 +347,25 @@ console.log('Into the format date function:'+time + date);
           item.deleted =  item.deleted -1;
           localStorage.setItem(temp,JSON.stringify(item));
       console.log(event.target.parentNode)
-    
+      document.getElementsByClassName('ibadge')[0].innerHTML= parseInt(document.getElementsByClassName('ibadge')[0].innerHTML)  - 1;
+      document.getElementsByClassName('ibadge')[2].innerHTML= parseInt(document.getElementsByClassName('ibadge')[2].innerHTML)  + 1;
       _deleted.appendChild(event.target.parentNode.parentNode.parentNode)
        clearInterval(run)
   //  alert('about to remove child');
       if(item.deleted < -1)
       {
        
-    console.log(footer.parentNode);
+
     let _node =footer.parentNode;
-    console.log(_node); 
+   
 
     let keys = Object.keys(localStorage);
     let del = _node.className;
-      // alert(del);
    
+      // alert(del);
+   del = del.split(' ');
     let c =del[0];
+     
     _node.parentNode.removeChild(_node);
 
    keys.forEach(index =>{
@@ -371,7 +376,7 @@ console.log('Into the format date function:'+time + date);
    });
   
       window.localStorage.removeItem(c);
-  
+      document.getElementsByClassName('ibadge')[2].innerHTML= parseInt(document.getElementsByClassName('ibadge')[2].innerHTML)  - 1;
       }
 
 // alert(window.localStorage.getItem(del[0]));
