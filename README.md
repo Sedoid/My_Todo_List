@@ -6,5 +6,5 @@ A Todo-List progressive web app for mobile devices. With a beautiful ui for both
   * A Ringtone to remind the user of soon approaching dealine
   
  ![HomePage](assets/images/Screenshot_loading.png) ![](assets/images/Screenshot_empty.png)  ![](assets/images/Screenshot_create.png) 
- ![](assets/images/Screenshot_task.png)
+ ![](assets/images/Screenshot_tasks.png)
 
