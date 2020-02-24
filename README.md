@@ -5,5 +5,5 @@ A Todo-List progressive web app for mobile devices. With a beautiful ui for both
   * A cool motivational quote is attached to every todo task created
   * A Ringtone to remind the user of soon approaching dealine
   
- ![GitHub Logo](/images/logo.png)
+ ![GitHub Logo](/images/logo.pnghttps://drive.google.com/file/d/1V2jQ4vPEE-VWI-bKR7E24q6rrau7HXI8/view?usp=sharing)
 Format: ![Alt Text](https://drive.google.com/file/d/1V2jQ4vPEE-VWI-bKR7E24q6rrau7HXI8/view?usp=sharing)
